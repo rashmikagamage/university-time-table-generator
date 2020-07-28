@@ -11,6 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import java.awt.Font;
+import java.awt.Frame;
+import java.awt.Window;
 import java.awt.Color;
 import java.awt.Component;
 import javax.swing.Box;
@@ -29,7 +31,8 @@ public class AddStudent extends JFrame {
 	private JTextField generatedGroupId;
 	private JTextField generatedSubGroupId;
 	private JTextField subGroup;
-	JFrame frame = new JFrame("Swing Tester");
+	static AddStudent frame;
+	//JFrame frame = new JFrame("Swing Tester");
 	
 	String sYear ="Y1",sSem="S2",sProgramme,sGroup,sSubGroup,sGroupId,sSubGroupId;
 
@@ -40,7 +43,7 @@ public class AddStudent extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					AddStudent frame = new AddStudent();
+					frame = new AddStudent();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -56,7 +59,8 @@ public class AddStudent extends JFrame {
 	 * 
 	 */
 	public AddStudent() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 575);
 		contentPane = new JPanel();
 		contentPane.setForeground(new Color(153, 51, 255));
@@ -109,7 +113,7 @@ public class AddStudent extends JFrame {
 		JLabel lblStudent = new JLabel("ADD STUDENT");
 		lblStudent.setForeground(new Color(0, 51, 51));
 		lblStudent.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblStudent.setBounds(369, 11, 206, 59);
+		lblStudent.setBounds(403, 11, 206, 59);
 		contentPane.add(lblStudent);
 		
 		JLabel image = new JLabel("");
@@ -182,10 +186,10 @@ public class AddStudent extends JFrame {
 				sProgramme = programme.getText().toString();
 				
 				if(sGroup.isEmpty()) {
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Please Enter Group");
 				}else if(sProgramme.isEmpty()){
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Please Enter Programme");
 				}else {
 				
@@ -211,13 +215,13 @@ public class AddStudent extends JFrame {
 				sProgramme = programme.getText().toString();
 				
 				if(sGroup.isEmpty()) {
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Please Enter Group");
 				}else if(sSubGroup.isEmpty()) {
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Please Enter Sub Group");
 				}else if(sProgramme.isEmpty()){
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Please Enter Programme");
 				}else {
 					sSubGroupId = sYear + "." + sSem + "."+ sProgramme + "."+ sGroup + "." + sSubGroup;
@@ -242,20 +246,17 @@ public class AddStudent extends JFrame {
 				sProgramme = programme.getText().toString();
 				
 				if(sGroup.isEmpty()) {
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Please Enter Group");
-				}else if(sSubGroup.isEmpty()) {
-					JOptionPane.showMessageDialog(frame,
-						    "Please Enter Sub Group");
 				}else if(sProgramme.isEmpty()){
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Please Enter Programme");
 				}else {
 					
 					addDataConnection addDataConnection = new addDataConnection();
 					addDataConnection.insertStudent(sYear, sSem, sGroup, sSubGroup, sProgramme,sGroupId,sSubGroupId);
 					
-					JOptionPane.showMessageDialog(frame,
+					JOptionPane.showMessageDialog(null,
 						    "Group Added !");
 					
 					groupNo.setText("");
@@ -266,13 +267,12 @@ public class AddStudent extends JFrame {
 					generatedGroupId.setText("");
 					
 				}
-				
-				
-				
+					
 			}
 		});
-		btnAdd.setBounds(607, 456, 117, 35);
+		btnAdd.setBounds(723, 436, 72, 25);
 		contentPane.add(btnAdd);
+		ImageIcon img1 = new ImageIcon(this.getClass().getResource("/home.png"));
 		
 	}
 }
