@@ -160,6 +160,10 @@ public class AddStudent extends JFrame {
 		contentPane.add(semester);
 		
 		generatedGroupId = new JTextField();
+		generatedGroupId.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
 		generatedGroupId.setEditable(false);
 		generatedGroupId.setColumns(10);
 		generatedGroupId.setBounds(651, 291, 199, 25);

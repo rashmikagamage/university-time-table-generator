@@ -4,8 +4,8 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="img"/>
 	<classpathentry kind="src" path="Resources"/>
-	<classpathentry kind="lib" path="C:/Users/User/Desktop/mysql-connector-java-5.1.49-bin.jar"/>
 	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
 	<classpathentry kind="lib" path="Resources/rs2xml.jar"/>
+	<classpathentry kind="lib" path="C:/Users/MCV/Desktop/mysql-connector-java-5.1.49-bin.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
