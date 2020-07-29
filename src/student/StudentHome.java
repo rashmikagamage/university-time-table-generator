@@ -57,7 +57,7 @@ public class StudentHome extends JFrame {
 				
 				AddStudent addStudent = new AddStudent();
 				addStudent.setVisible(true);
-				
+				dispose();
 			}
 		});
 		button.setForeground(Color.WHITE);

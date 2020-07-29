@@ -272,6 +272,17 @@ public class AddStudent extends JFrame {
 		});
 		btnAdd.setBounds(723, 436, 72, 25);
 		contentPane.add(btnAdd);
+		
+		JButton btnNewButton = new JButton("New button");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				StudentHome s = new StudentHome();
+				s.setVisible(true);
+				
+			}
+		});
+		btnNewButton.setBounds(262, 77, 89, 23);
+		contentPane.add(btnNewButton);
 		ImageIcon img1 = new ImageIcon(this.getClass().getResource("/home.png"));
 		
 	}
