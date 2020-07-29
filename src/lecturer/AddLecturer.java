@@ -25,7 +25,7 @@ public class AddLecturer extends JFrame {
 	private JTextField generateRank;
 	
 	String sFaculty ="Computing",sDepartment="CSSE",sCenter ="Malabe",sBuilding="New Building",sLevel ="Professor",sName,sEmpID,sGenerateRank;
-
+	int sLevelNo=1;
 
 	/**
 	 * Launch the application.
@@ -165,6 +165,46 @@ public class AddLecturer extends JFrame {
 		contentPane.add(btnGenerateRank);
 		
 		JButton btnAddLecturer = new JButton("Add");
+		btnAddLecturer.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				sName = name.getText().toString();
+				sEmpID = empID.getText().toString();
+				sGenerateRank = generateRank.getText().toString();
+				
+
+				if(sName.isEmpty()) {
+					JOptionPane.showMessageDialog(null,
+						    "Please Enter Name");
+				}else if(sEmpID.isEmpty()){
+					JOptionPane.showMessageDialog(null,
+						    "Please Enter Employee ID");
+				}
+				else if(sGenerateRank.isEmpty()) {
+					JOptionPane.showMessageDialog(null,
+						    "Please Generate Rank");
+				}else {
+					
+
+					addLecturerDataConnection addLecturer = new addLecturerDataConnection();
+					addLecturer.insertLecturer(sName, sEmpID, sFaculty, sDepartment, sCenter, sBuilding, sLevel, 1, sGenerateRank);
+					
+					JOptionPane.showMessageDialog(null,
+						    "Lecturer Added !");
+					
+					name.setText("");
+					empID.setText("");
+					generateRank.setText("");
+					
+				}
+				
+				
+				
+				
+				
+				
+			}
+		});
 		btnAddLecturer.setForeground(Color.WHITE);
 		btnAddLecturer.setBackground(new Color(102, 51, 255));
 		btnAddLecturer.setBounds(663, 495, 72, 25);
