@@ -329,6 +329,45 @@ public class ViewLecturer extends JFrame {
 		contentPane.add(btnUpdateLec);
 		
 		JButton btnDeleteLec = new JButton("Delete");
+		btnDeleteLec.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				empId = SearchEmpTextF.getText().toString();
+				
+				if(empId.isEmpty() ) {
+					JOptionPane.showMessageDialog(frame,
+						    "Please Enter Emp Id  !");
+					
+				}
+				else {
+					
+					viewLecturerConnection viewLecConnection = new viewLecturerConnection();
+					
+					 int result = JOptionPane.showConfirmDialog(frame,"Sure? You want to Delete?", "Swing Tester",
+				               JOptionPane.YES_NO_OPTION,
+				               JOptionPane.QUESTION_MESSAGE);
+				            if(result == JOptionPane.YES_OPTION){
+				            	viewLecConnection.deleteLecturer(empId);
+				            	JOptionPane.showMessageDialog(frame,
+									    "Deleted !");
+				            	
+				            	SearchEmpTextF.setText("");
+								nameTextF.setText("");
+								empIdTextF.setText("");
+								
+								faculty.setSelectedItem("Computing");
+								department.setSelectedItem("CSSE");
+								center.setSelectedItem("Malabe");
+								building.setSelectedItem("New building");
+								level.setSelectedItem("Professor");
+				            	
+				         }
+					
+				}
+				
+				
+			}
+		});
 		btnDeleteLec.setForeground(Color.WHITE);
 		btnDeleteLec.setBackground(new Color(102, 51, 255));
 		btnDeleteLec.setBounds(536, 490, 117, 35);

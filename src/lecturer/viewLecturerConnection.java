@@ -72,5 +72,20 @@ public class viewLecturerConnection {
 			
 	}
 	
+	public void deleteLecturer(String empId) {
+		
+		String query = "DELETE FROM `lecturers` WHERE `empID`=?";
+			 try {
+				ps = connection.prepareStatement(query);
+				ps.setString(1,empId);
+				ps.executeUpdate();
+				
+			} catch (SQLException e) {
+				
+				e.printStackTrace();
+			}
+		
+	}
+	
 
 }
