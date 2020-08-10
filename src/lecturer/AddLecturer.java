@@ -189,6 +189,9 @@ public class AddLecturer extends JFrame {
 					addLecturerDataConnection addLecturer = new addLecturerDataConnection();
 					addLecturer.insertLecturer(sName, sEmpID, sFaculty, sDepartment, sCenter, sBuilding, sLevel, 1, sGenerateRank);
 					
+					// todo 1 --> not added level int
+					
+					
 					JOptionPane.showMessageDialog(null,
 						    "Lecturer Added !");
 					
