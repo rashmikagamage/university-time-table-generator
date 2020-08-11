@@ -281,6 +281,12 @@ public class AddLecturer extends JFrame {
 		generateRank.setColumns(10);
 		generateRank.setBounds(595, 439, 199, 25);
 		contentPane.add(generateRank);
+		
+		JLabel lblAddLecturer = new JLabel("ADD LECTURER");
+		lblAddLecturer.setForeground(new Color(0, 51, 51));
+		lblAddLecturer.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblAddLecturer.setBounds(385, 23, 206, 59);
+		contentPane.add(lblAddLecturer);
 
 	}
 }
