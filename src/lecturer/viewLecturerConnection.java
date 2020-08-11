@@ -15,7 +15,8 @@ public class viewLecturerConnection {
 		
 		ResultSet rs = null;
 		try {
-			String query = "SELECT `lecName`,`empID`,`faculty`,`department`,`center`,`building`,`levelString`,`levelNo`,`rank` FROM lecturers";
+			String query = "SELECT `lecName` as `Name` ,`empID` as `ID`,`faculty` as `Faculty`"
+					+ ",`department` as `Department`,`center` as `Center`,`building` as `Building`,`levelString` as `Level`,`rank` as `Rank` FROM lecturers";
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();
 		} catch (SQLException e) {

@@ -70,7 +70,7 @@ public class ViewLecturer extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(98, 11, 805, 176);
+		scrollPane.setBounds(105, 42, 805, 176);
 		contentPane.add(scrollPane);
 
 		
@@ -95,19 +95,19 @@ public class ViewLecturer extends JFrame {
 		});
 		btnView.setForeground(Color.WHITE);
 		btnView.setBackground(new Color(102, 51, 255));
-		btnView.setBounds(441, 198, 89, 25);
+		btnView.setBounds(444, 229, 89, 25);
 		contentPane.add(btnView);
 		
 		JLabel lblEmployeeId = new JLabel("Employee ID");
 		lblEmployeeId.setForeground(new Color(25, 25, 112));
 		lblEmployeeId.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEmployeeId.setBounds(269, 253, 100, 14);
+		lblEmployeeId.setBounds(270, 268, 100, 14);
 		contentPane.add(lblEmployeeId);
 		
 		SearchEmpTextF = new JTextField();
 		SearchEmpTextF.setText("");
 		SearchEmpTextF.setColumns(10);
-		SearchEmpTextF.setBounds(394, 250, 199, 25);
+		SearchEmpTextF.setBounds(396, 265, 199, 25);
 		contentPane.add(SearchEmpTextF);
 		
 		JButton btnSearchEmpId = new JButton("Search");
@@ -156,7 +156,7 @@ public class ViewLecturer extends JFrame {
 		});
 		btnSearchEmpId.setForeground(Color.WHITE);
 		btnSearchEmpId.setBackground(new Color(102, 51, 255));
-		btnSearchEmpId.setBounds(638, 251, 89, 23);
+		btnSearchEmpId.setBounds(631, 266, 89, 23);
 		contentPane.add(btnSearchEmpId);
 		
 		nameTextF = new JTextField();
@@ -391,5 +391,11 @@ public class ViewLecturer extends JFrame {
 		});
 		level.setBounds(478, 432, 197, 25);
 		contentPane.add(level);
+		
+		JLabel lblViewLecturers = new JLabel("VIEW LECTURERS");
+		lblViewLecturers.setForeground(new Color(0, 51, 51));
+		lblViewLecturers.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblViewLecturers.setBounds(387, 0, 208, 45);
+		contentPane.add(lblViewLecturers);
 	}
 }
