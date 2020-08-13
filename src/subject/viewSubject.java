@@ -12,6 +12,7 @@ import javax.swing.border.EmptyBorder;
 
 import net.proteanit.sql.DbUtils;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
@@ -52,6 +53,7 @@ public class viewSubject extends JFrame {
 	
 	String nameSub,searchCode,chainedCode,year="Y1",semester="S1",lecs,tutes,labs,evls;
 	JFrame frame = new JFrame("Swing Tester");
+	private JLabel image;
 	/**
 	 * Launch the application.
 	 */
@@ -85,7 +87,7 @@ public class viewSubject extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(92, 42, 805, 176);
+		scrollPane.setBounds(170, 50, 805, 176);
 		contentPane.add(scrollPane);
 		
 		table = new JTable();
@@ -111,10 +113,10 @@ public class viewSubject extends JFrame {
 		btnShow.setBounds(453, 237, 89, 25);
 		contentPane.add(btnShow);
 		
-		lblViewSubjects = new JLabel("VIEW SUBJECTS");
+		lblViewSubjects = new JLabel("VIEW/EDIT/DELETE SUBJECTS");
 		lblViewSubjects.setForeground(new Color(0, 51, 51));
 		lblViewSubjects.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblViewSubjects.setBounds(390, 0, 191, 45);
+		lblViewSubjects.setBounds(390, 0, 374, 45);
 		contentPane.add(lblViewSubjects);
 		
 		lblSubjectCode = new JLabel("Subject Code");
@@ -396,6 +398,12 @@ public class viewSubject extends JFrame {
 		evl.setColumns(10);
 		evl.setBounds(605, 450, 199, 25);
 		contentPane.add(evl);
+		
+		image = new JLabel("");
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/lec128.png"));
+		image.setIcon(img);
+		image.setBounds(10, 50, 149, 209);
+		contentPane.add(image);
 	}
 
 }

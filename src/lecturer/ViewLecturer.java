@@ -13,6 +13,8 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.Color;
 import java.awt.Font;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.sql.ResultSet;
@@ -70,7 +72,7 @@ public class ViewLecturer extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(105, 42, 805, 176);
+		scrollPane.setBounds(169, 42, 805, 176);
 		contentPane.add(scrollPane);
 
 		
@@ -392,10 +394,16 @@ public class ViewLecturer extends JFrame {
 		level.setBounds(478, 432, 197, 25);
 		contentPane.add(level);
 		
-		JLabel lblViewLecturers = new JLabel("VIEW LECTURERS");
+		JLabel lblViewLecturers = new JLabel("VIEW/EDIT/DELETE LECTURERS");
 		lblViewLecturers.setForeground(new Color(0, 51, 51));
 		lblViewLecturers.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblViewLecturers.setBounds(387, 0, 208, 45);
+		lblViewLecturers.setBounds(387, 0, 390, 45);
 		contentPane.add(lblViewLecturers);
+		
+		JLabel image = new JLabel("");
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/lec128.png"));
+		image.setIcon(img);
+		image.setBounds(10, 34, 149, 209);
+		contentPane.add(image);
 	}
 }
