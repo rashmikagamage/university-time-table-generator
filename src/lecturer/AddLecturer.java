@@ -16,6 +16,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddLecturer extends JFrame {
 
@@ -23,9 +25,12 @@ public class AddLecturer extends JFrame {
 	private JTextField name;
 	private JTextField empID;
 	private JTextField generateRank;
+	JLabel lblNewLabel ;
+	JComboBox department;
 	
 	String sFaculty ="Computing",sDepartment="CSSE",sCenter ="Malabe",sBuilding="New Building",sLevel ="Professor",sName,sEmpID,sGenerateRank;
 	int sLevelNo=1;
+	int validate;
 
 	/**
 	 * Launch the application.
@@ -67,7 +72,7 @@ public class AddLecturer extends JFrame {
 		JLabel lblName = new JLabel("Name");
 		lblName.setForeground(new Color(25, 25, 112));
 		lblName.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblName.setBounds(453, 119, 100, 14);
+		lblName.setBounds(453, 104, 100, 14);
 		contentPane.add(lblName);
 		
 		JLabel lblEmployeeId = new JLabel("Employee ID");
@@ -109,13 +114,42 @@ public class AddLecturer extends JFrame {
 		name = new JTextField();
 		name.setText("");
 		name.setColumns(10);
-		name.setBounds(595, 116, 199, 25);
+		name.setBounds(595, 101, 199, 25);
 		contentPane.add(name);
 		
 		empID = new JTextField();
+		empID.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent ke) {
+				
+				 String value = empID.getText();
+		            int l = value.length();
+		            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+		            	//empID.setEditable(true);
+		            	lblNewLabel.setText("");
+		            } else {
+		            	//empID.setEditable(false);
+		            	lblNewLabel.setText("* Enter only numeric digits(0-9)");
+		            }
+				
+				
+				
+			}
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				
+				
+				
+			}
+			@Override
+			public void keyReleased(KeyEvent e) {
+				
+				
+			}
+		});
 		empID.setText("");
 		empID.setColumns(10);
-		empID.setBounds(595, 155, 199, 25);
+		empID.setBounds(595, 147, 199, 25);
 		contentPane.add(empID);
 		
 		JButton btnGenerateRank = new JButton("Generate");
@@ -132,24 +166,32 @@ public class AddLecturer extends JFrame {
 				}
 				else if(sLevel.equals("Professor")) {
 					sGenerateRank = "1" + "." + sEmpID;
+					sLevelNo = 1;
 				}
 				else if(sLevel.equals("Assistant Professor")) {
 					sGenerateRank = "2" + "." + sEmpID;
+					sLevelNo = 2;
 				}
 				else if(sLevel.equals("Senior Lecturer(HG)")) {
 					sGenerateRank = "3" + "." + sEmpID;
+					sLevelNo = 3;
 				}
 				else if(sLevel.equals("Senior Lecturer")) {
 					sGenerateRank = "4" + "." + sEmpID;
+					sLevelNo = 4;
 				}
 				else if(sLevel.equals("Lecturer")) {
 					sGenerateRank = "5" + "." + sEmpID;
+					sLevelNo = 5;
 				}
+				
 				else if(sLevel.equals("Assistant Lecturer")) {
 					sGenerateRank = "6" + "." + sEmpID;
+					sLevelNo = 6;
 				}
 				else if(sLevel.equals("Instructor")) {
 					sGenerateRank = "7" + "." + sEmpID;
+					sLevelNo = 7;
 				}
 				
 				generateRank.setText(sGenerateRank);
@@ -187,9 +229,9 @@ public class AddLecturer extends JFrame {
 					
 
 					addLecturerDataConnection addLecturer = new addLecturerDataConnection();
-					addLecturer.insertLecturer(sName, sEmpID, sFaculty, sDepartment, sCenter, sBuilding, sLevel, 1, sGenerateRank);
+					addLecturer.insertLecturer(sName, sEmpID, sFaculty, sDepartment, sCenter, sBuilding, sLevel, sLevelNo, sGenerateRank);
 					
-					// todo 1 --> not added level int
+					
 					
 					
 					JOptionPane.showMessageDialog(null,
@@ -219,13 +261,24 @@ public class AddLecturer extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				sFaculty = (String)faculty.getSelectedItem();
+
+				
+				System.out.println(sFaculty);
+
+				
 			}
 		});
 		faculty.setBounds(595, 200, 197, 25);
 		contentPane.add(faculty);
 		
-		String[] depList = {"CSSE","SE"};
-		JComboBox department = new JComboBox(depList);
+		String[] depList = {"CSSE","CSE","IT","CIVIL ENG","MECHANICAL ENG","MATERIALS ENG","QUANTITY SURVEYING"};
+		String[] engDepList = {"CIVIL ENG","MECHANICAL ENG","MATERIALS ENG","QUANTITY SURVEYING"};
+		String[] businessDepList = {"BM","BA","Accounting"};
+		String[] humanitiesDepList = {"Nursing","BS"};
+		
+		
+		
+		department = new JComboBox(depList);
 		department.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -273,7 +326,7 @@ public class AddLecturer extends JFrame {
 		JLabel image = new JLabel("");
 		ImageIcon img = new ImageIcon(this.getClass().getResource("/class1.png"));
 		image.setIcon(img);
-		image.setBounds(103, 119, 300, 300);
+		image.setBounds(72, 101, 300, 300);
 		contentPane.add(image);
 		
 		generateRank = new JTextField();
@@ -287,6 +340,12 @@ public class AddLecturer extends JFrame {
 		lblAddLecturer.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblAddLecturer.setBounds(385, 23, 206, 59);
 		contentPane.add(lblAddLecturer);
+		
+		lblNewLabel = new JLabel("");
+		lblNewLabel.setForeground(Color.RED);
+		lblNewLabel.setBackground(Color.RED);
+		lblNewLabel.setBounds(595, 175, 199, 14);
+		contentPane.add(lblNewLabel);
 
 	}
 }

@@ -400,7 +400,7 @@ public class viewSubject extends JFrame {
 		contentPane.add(evl);
 		
 		image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/lec128.png"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/viewLecturer.png"));
 		image.setIcon(img);
 		image.setBounds(10, 50, 149, 209);
 		contentPane.add(image);

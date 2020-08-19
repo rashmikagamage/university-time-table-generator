@@ -401,7 +401,7 @@ public class ViewLecturer extends JFrame {
 		contentPane.add(lblViewLecturers);
 		
 		JLabel image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/lec128.png"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/viewLecturer.png"));
 		image.setIcon(img);
 		image.setBounds(10, 34, 149, 209);
 		contentPane.add(image);
