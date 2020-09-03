@@ -26,6 +26,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class ViewLecturer extends JFrame {
 
@@ -34,6 +36,7 @@ public class ViewLecturer extends JFrame {
 	private JTextField SearchEmpTextF;
 	private JTextField nameTextF;
 	private JTextField empIdTextF;
+	JLabel validate;
 	
 	
 	String empId,name,unChangedEmpId,Faculty,Level,Building,Department,Center,sGenerateRank;
@@ -174,6 +177,22 @@ public class ViewLecturer extends JFrame {
 		contentPane.add(lblName);
 		
 		empIdTextF = new JTextField();
+		empIdTextF.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent ke) {
+				
+				  
+	            char c = ke.getKeyChar();
+	            
+	            if(Character.isLetter(c))
+	            {
+	            	validate.setText("* Enter only numeric digits(0-9) *");
+	            }
+	            else {
+	            	validate.setText("");
+	            }
+			}
+		});
 		empIdTextF.setText("");
 		empIdTextF.setColumns(10);
 		empIdTextF.setBounds(476, 312, 199, 25);
@@ -191,12 +210,32 @@ public class ViewLecturer extends JFrame {
 		lblFaculty.setBounds(700, 310, 100, 25);
 		contentPane.add(lblFaculty);
 		
-		String[] facList = {"Computing", "Engineering", "Business", "Humanities & Sciences"};
+		String[] facList = {"Computing", "Engineering", "Business"};
 		faculty = new JComboBox(facList);
 		faculty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				Faculty = (String)faculty.getSelectedItem();
+				
+				
+				if(Faculty.equals("Computing")) {
+					department.removeAllItems();
+					department.addItem("CSSE");
+					department.addItem("IT");
+					department.addItem("CSE");
+				}
+				if(Faculty.equals("Engineering")) {
+					department.removeAllItems();
+					department.addItem("CIVIL ENG");
+					department.addItem("MECHANICAL ENG");
+					department.addItem("MATERIALS ENG");
+				}
+				if(Faculty.equals("Business")) {
+					department.removeAllItems();
+					department.addItem("BM");
+					department.addItem("BA");
+					department.addItem("Accounting");
+				}
 			}
 		});
 		//faculty.setSelectedItem("Business");
@@ -209,7 +248,7 @@ public class ViewLecturer extends JFrame {
 		lblDept.setBounds(10, 370, 100, 25);
 		contentPane.add(lblDept);
 		
-		String[] depList = {"CSSE","SE"};
+		String[] depList = {"CSSE","IT","CSE"};
 		department = new JComboBox(depList);
 		department.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -227,12 +266,22 @@ public class ViewLecturer extends JFrame {
 		lblCenter.setBounds(349, 370, 156, 25);
 		contentPane.add(lblCenter);
 		
-		String[] centerList = { "Malabe", "Metro", "Matara", "Kandy", "Kurunagala","Jaffna"};
+		String[] centerList = { "Malabe", "Metro", "Matara", "Kandy"};
 		center = new JComboBox(centerList);
 		center.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				Center = (String)center.getSelectedItem();
+				
+				System.out.println(Center);
+				
+				if(Center.equals("Malabe")) {
+					System.out.println("malabe");
+				}
+
+				else if(Center.equals("Metro")) {
+					System.out.println("Metro");
+				}
 				
 			}
 		});
@@ -295,9 +344,9 @@ public class ViewLecturer extends JFrame {
 						sGenerateRank = "7" + "." + unChangedEmpId;
 					}
 					
-					System.out.println(name+unChangedEmpId+sGenerateRank+Level);
+					//System.out.println(name+unChangedEmpId+sGenerateRank+Level);
 					
-					if(empId.equals("")) {
+					if(unChangedEmpId.equals("") || name.equals("") ) {
 						JOptionPane.showMessageDialog(frame,
 							    "Please Fill empid !");
 					}
@@ -305,7 +354,7 @@ public class ViewLecturer extends JFrame {
 						 
 						viewLecturerConnection viewLecConnection = new viewLecturerConnection();
 						viewLecConnection.updateLecturer(name, unChangedEmpId, Faculty, Department, Center, Building, Level, sGenerateRank,empId);
-						
+						System.out.println(name+unChangedEmpId+Faculty+Department+Center+Building+Level+sGenerateRank+empId);
 						JOptionPane.showMessageDialog(frame,
 							    "Updated !");
 						
@@ -405,5 +454,10 @@ public class ViewLecturer extends JFrame {
 		image.setIcon(img);
 		image.setBounds(10, 34, 149, 209);
 		contentPane.add(image);
+		
+		validate = new JLabel("");
+		validate.setForeground(Color.RED);
+		validate.setBounds(476, 347, 199, 14);
+		contentPane.add(validate);
 	}
 }

@@ -17,6 +17,8 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddSubject extends JFrame {
 
@@ -37,6 +39,10 @@ public class AddSubject extends JFrame {
 	private JLabel lblAddSubject;
 	
 	String sName,sCode,sYear="Y1",sSem="S1",sLec,sTute,sLab,sEvl;
+	private JLabel v1;
+	private JLabel v2;
+	private JLabel v3;
+	private JLabel v4;
 	
 
 	/**
@@ -101,24 +107,90 @@ public class AddSubject extends JFrame {
 		contentPane.add(code);
 		
 		lec = new JTextField();
+		lec.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent key) {
+				
+				  char c = key.getKeyChar();
+		            
+		            if(Character.isLetter(c))
+		            {
+		            	v1.setText("* Enter only numeric digits(0-9) *");
+		            }
+		            else {
+		            	v1.setText("");
+		            }
+			}
+		});
 		lec.setText("");
 		lec.setColumns(10);
 		lec.setBounds(637, 306, 199, 25);
 		contentPane.add(lec);
 		
 		tute = new JTextField();
+		tute.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent key) {
+				
+
+				  char c = key.getKeyChar();
+		            
+		            if(Character.isLetter(c))
+		            {
+		            	v2.setText("* Enter only numeric digits(0-9) *");
+		            }
+		            else {
+		            	v2.setText("");
+		            }
+
+			}
+		});
 		tute.setText("");
 		tute.setColumns(10);
 		tute.setBounds(637, 362, 199, 25);
 		contentPane.add(tute);
 		
 		lab = new JTextField();
+		lab.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent key) {
+
+				  char c = key.getKeyChar();
+		            
+		            if(Character.isLetter(c))
+		            {
+		            	v3.setText("* Enter only numeric digits(0-9) *");
+		            }
+		            else {
+		            	v3.setText("");
+		            }
+
+				
+			}
+		});
 		lab.setText("");
 		lab.setColumns(10);
 		lab.setBounds(637, 410, 199, 25);
 		contentPane.add(lab);
 		
 		evl = new JTextField();
+		evl.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent key) {
+				
+
+				  char c = key.getKeyChar();
+		            
+		            if(Character.isLetter(c))
+		            {
+		            	v4.setText("* Enter only numeric digits(0-9) *");
+		            }
+		            else {
+		            	v4.setText("");
+		            }
+
+			}
+		});
 		evl.setText("");
 		evl.setColumns(10);
 		evl.setBounds(637, 461, 199, 25);
@@ -133,13 +205,13 @@ public class AddSubject extends JFrame {
 		lblName_3 = new JLabel("Offered Year");
 		lblName_3.setForeground(new Color(25, 25, 112));
 		lblName_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblName_3.setBounds(461, 203, 100, 14);
+		lblName_3.setBounds(461, 195, 100, 14);
 		contentPane.add(lblName_3);
 		
 		lblName_4 = new JLabel("Offered Semester");
 		lblName_4.setForeground(new Color(25, 25, 112));
 		lblName_4.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblName_4.setBounds(461, 257, 134, 14);
+		lblName_4.setBounds(461, 249, 134, 14);
 		contentPane.add(lblName_4);
 		
 		lblName_5 = new JLabel("No. Lec. Hours");
@@ -202,6 +274,14 @@ public class AddSubject extends JFrame {
 					JOptionPane.showMessageDialog(null,
 						    "Subject Added !");
 					
+					
+					name.setText("");
+					code.setText("");
+					lec.setText("");
+					tute.setText("");
+					lab.setText("");
+					evl.setText("");
+					
 				}
 				
 				
@@ -234,7 +314,7 @@ public class AddSubject extends JFrame {
 				sYear = (String)year.getSelectedItem();
 			}
 		});
-		year.setBounds(637, 200, 197, 25);
+		year.setBounds(637, 192, 197, 25);
 		contentPane.add(year);
 		
 		String[] semList = {"S1", "S2"};
@@ -245,7 +325,27 @@ public class AddSubject extends JFrame {
 				sSem = (String)sem.getSelectedItem();
 			}
 		});
-		sem.setBounds(637, 256, 197, 25);
+		sem.setBounds(637, 246, 197, 25);
 		contentPane.add(sem);
+		
+		v1 = new JLabel("");
+		v1.setForeground(Color.RED);
+		v1.setBounds(637, 342, 199, 14);
+		contentPane.add(v1);
+		
+		v2 = new JLabel("");
+		v2.setForeground(Color.RED);
+		v2.setBounds(637, 385, 199, 14);
+		contentPane.add(v2);
+		
+		v3 = new JLabel("");
+		v3.setForeground(Color.RED);
+		v3.setBounds(637, 435, 199, 14);
+		contentPane.add(v3);
+		
+		v4 = new JLabel("");
+		v4.setForeground(Color.RED);
+		v4.setBounds(637, 485, 199, 14);
+		contentPane.add(v4);
 	}
 }

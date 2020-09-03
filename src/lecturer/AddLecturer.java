@@ -26,7 +26,11 @@ public class AddLecturer extends JFrame {
 	private JTextField empID;
 	private JTextField generateRank;
 	JLabel lblNewLabel ;
-	JComboBox department;
+	
+	String[] buildingList;
+	String depList ;
+
+	JComboBox faculty,center,level,department,building;
 	
 	String sFaculty ="Computing",sDepartment="CSSE",sCenter ="Malabe",sBuilding="New Building",sLevel ="Professor",sName,sEmpID,sGenerateRank;
 	int sLevelNo=1;
@@ -122,30 +126,34 @@ public class AddLecturer extends JFrame {
 			@Override
 			public void keyPressed(KeyEvent ke) {
 				
+
 				 String value = empID.getText();
 		            int l = value.length();
-		            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
-		            	//empID.setEditable(true);
-		            	lblNewLabel.setText("");
-		            } else {
-		            	//empID.setEditable(false);
-		            	lblNewLabel.setText("* Enter only numeric digits(0-9)");
+//		            if (ke.getKeyChar() >= '0' && ke.getKeyChar() <= '9') {
+//		            	//empID.setEditable(true);
+//		            	lblNewLabel.setText("");
+//		            } else {
+//		            	//empID.setEditable(false);
+//		            	lblNewLabel.setText("* Enter only numeric digits(0-9)");
+//		            }
+		            System.out.println("characters"+l);
+		            
+		            
+		            char c = ke.getKeyChar();
+		            
+		            if(Character.isLetter(c))
+		            {
+		            	lblNewLabel.setText("* Enter only numeric digits(0-9) *");
 		            }
-				
-				
-				
-			}
-			@Override
-			public void keyTyped(KeyEvent arg0) {
-				
-				
-				
-			}
-			@Override
-			public void keyReleased(KeyEvent e) {
+		            else {
+		            	lblNewLabel.setText("");
+		            }
+		            
+		           
 				
 				
 			}
+			
 		});
 		empID.setText("");
 		empID.setColumns(10);
@@ -215,24 +223,22 @@ public class AddLecturer extends JFrame {
 				sGenerateRank = generateRank.getText().toString();
 				
 
-				if(sName.isEmpty()) {
+				if(sName.isEmpty() || sEmpID.isEmpty() || sGenerateRank.isEmpty() ) {
 					JOptionPane.showMessageDialog(null,
-						    "Please Enter Name");
-				}else if(sEmpID.isEmpty()){
-					JOptionPane.showMessageDialog(null,
-						    "Please Enter Employee ID");
+						    "Please Fill all fields and continue");
+				
 				}
-				else if(sGenerateRank.isEmpty()) {
+				if(empID.getText().length() > 6 ) {
 					JOptionPane.showMessageDialog(null,
-						    "Please Generate Rank");
-				}else {
+						    "Error : Employee Id should contains 6 numbers only");
+					//empID.setText("");
+					System.out.println(empID.getText().length());
+				}
+				
+				else {
 					
-
 					addLecturerDataConnection addLecturer = new addLecturerDataConnection();
 					addLecturer.insertLecturer(sName, sEmpID, sFaculty, sDepartment, sCenter, sBuilding, sLevel, sLevelNo, sGenerateRank);
-					
-					
-					
 					
 					JOptionPane.showMessageDialog(null,
 						    "Lecturer Added !");
@@ -240,13 +246,12 @@ public class AddLecturer extends JFrame {
 					name.setText("");
 					empID.setText("");
 					generateRank.setText("");
+					faculty.setSelectedItem("Computing");
+					department.setSelectedItem("CSSE");
+					center.setSelectedItem("Malabe");
+					building.setSelectedItem("New building");
 					
 				}
-				
-				
-				
-				
-				
 				
 			}
 		});
@@ -255,15 +260,33 @@ public class AddLecturer extends JFrame {
 		btnAddLecturer.setBounds(663, 495, 72, 25);
 		contentPane.add(btnAddLecturer);
 		
-		String[] facList = {"Computing", "Engineering", "Business", "Humanities & Sciences"};
-		JComboBox faculty = new JComboBox(facList);
+		String[] facList = {"Computing", "Engineering", "Business"};
+		 faculty = new JComboBox(facList);
 		faculty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				sFaculty = (String)faculty.getSelectedItem();
 
 				
-				System.out.println(sFaculty);
+				if(sFaculty.equals("Computing")) {
+					department.removeAllItems();
+					department.addItem("CSSE");
+					department.addItem("IT");
+					department.addItem("CSE");
+				}
+				if(sFaculty.equals("Engineering")) {
+					department.removeAllItems();
+					department.addItem("CIVIL ENG");
+					department.addItem("MECHANICAL ENG");
+					department.addItem("MATERIALS ENG");
+				}
+				if(sFaculty.equals("Business")) {
+					department.removeAllItems();
+					department.addItem("BM");
+					department.addItem("BA");
+					department.addItem("Accounting");
+				}
+				
 
 				
 			}
@@ -271,36 +294,39 @@ public class AddLecturer extends JFrame {
 		faculty.setBounds(595, 200, 197, 25);
 		contentPane.add(faculty);
 		
-		String[] depList = {"CSSE","CSE","IT","CIVIL ENG","MECHANICAL ENG","MATERIALS ENG","QUANTITY SURVEYING"};
-		String[] engDepList = {"CIVIL ENG","MECHANICAL ENG","MATERIALS ENG","QUANTITY SURVEYING"};
-		String[] businessDepList = {"BM","BA","Accounting"};
-		String[] humanitiesDepList = {"Nursing","BS"};
 		
-		
-		
+		String[] depList = {"CSSE","IT","CSE"};
 		department = new JComboBox(depList);
 		department.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				sDepartment = (String)department.getSelectedItem();
+				
+				System.out.println("dept"+sDepartment);
 			}
 		});
 		department.setBounds(595, 245, 197, 25);
 		contentPane.add(department);
 		
-		String[] centerList = { "Malabe", "Metro", "Matara", "Kandy", "Kurunagala","Jaffna"};
-		JComboBox center = new JComboBox(centerList);
+		String[] centerList = { "Malabe", "Metro", "Matara", "Kandy"};
+		 center = new JComboBox(centerList);
 		center.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				sCenter = (String)center.getSelectedItem();
+				
+				System.out.println(sCenter);
+				
+			
+				
+				
 			}
 		});
 		center.setBounds(595, 289, 197, 25);
 		contentPane.add(center);
 		
-		String[] buildingList = {"New building", "D-block" };
-		JComboBox building = new JComboBox(buildingList);
+		String[] buildingList = {"New building", "D-block","Engineering" };
+		 building = new JComboBox(buildingList);
 		building.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -312,7 +338,7 @@ public class AddLecturer extends JFrame {
 		
 		String[] levelList = {"Professor","Assistant Professor","Senior Lecturer(HG)","Senior Lecturer","Lecturer",
 			"Assistant Lecturer","Instructor"	};
-		JComboBox level = new JComboBox(levelList);
+		 level = new JComboBox(levelList);
 		level.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				

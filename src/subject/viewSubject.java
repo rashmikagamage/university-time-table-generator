@@ -204,10 +204,12 @@ public class viewSubject extends JFrame {
 				//where
 				searchCode = search.getText().toString();
 				
+				System.out.println("searchCode is"+searchCode);
 				
+
 				if(searchCode.equals("")) {
 					JOptionPane.showMessageDialog(frame,
-						    "Please Search subject and update !");
+						    "Please Search subject and Delete!");
 			    }
 				else {
 					
