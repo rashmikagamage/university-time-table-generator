@@ -253,11 +253,15 @@ public class AddSubject extends JFrame {
 				
 				
 				
-				if(sName.isEmpty() || sCode.isEmpty() || sCode.isEmpty() || sLec.isEmpty() || 
+				if(sName.isEmpty()  || sCode.isEmpty() || sLec.isEmpty() || 
 						sTute.isEmpty() || sLab.isEmpty() ||  sEvl.isEmpty()
 						) {
 					JOptionPane.showMessageDialog(null,
 						    "Fields can't be empty ");
+				}
+				else if(Integer.parseInt(sLec) >=5 || Integer.parseInt(sTute) >=5 || Integer.parseInt(sLab) >=5 ||  Integer.parseInt(sEvl) >=5 ) {
+					JOptionPane.showMessageDialog(null,
+						    "Max subject duration is 5 ");
 				}
 				else {
 					

@@ -195,11 +195,7 @@ public class viewSubject extends JFrame {
 				
 				int l,t,la,ev;
 				
-				l = Integer.parseInt(lecs);
-				t = Integer.parseInt(tutes);
-				la = Integer.parseInt(labs);
-				ev = Integer.parseInt(evls);
-				
+								
 				
 				//where
 				searchCode = search.getText().toString();
@@ -214,11 +210,21 @@ public class viewSubject extends JFrame {
 				else {
 					
 					
-					if(code.equals("")) {
+					if(chainedCode.isEmpty() || nameSub.isEmpty() || lecs.isEmpty() || tutes.isEmpty() || labs.isEmpty() || evls.isEmpty() ){
 						JOptionPane.showMessageDialog(frame,
 							    "Please Fill code !");
 					}
+					else if(Integer.parseInt(lecs) >=5 || Integer.parseInt(tutes) >=5 || Integer.parseInt(labs) >=5 ||  Integer.parseInt(evls) >=5 ) {
+						JOptionPane.showMessageDialog(null,
+							    "Max subject duration is 5 ");
+					}
 					else {
+						
+						l = Integer.parseInt(lecs);
+						t = Integer.parseInt(tutes);
+						la = Integer.parseInt(labs);
+						ev = Integer.parseInt(evls);
+
 						viewSubjectDataConnection viewSubjects = new viewSubjectDataConnection();
 						viewSubjects.updateSubject(nameSub, chainedCode, year, semester, l, t, la, ev, searchCode);
 						

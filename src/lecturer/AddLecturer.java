@@ -32,7 +32,7 @@ public class AddLecturer extends JFrame {
 
 	JComboBox faculty,center,level,department,building;
 	
-	String sFaculty ="Computing",sDepartment="CSSE",sCenter ="Malabe",sBuilding="New Building",sLevel ="Professor",sName,sEmpID,sGenerateRank;
+	String sFaculty ="Computing",sDepartment="CSSE",sCenter ="Malabe",sBuilding="New Building",sLevel ="Professor",sName="test user",sEmpID="988988",sGenerateRank="6.988988";
 	int sLevelNo=1;
 	int validate;
 
@@ -228,7 +228,7 @@ public class AddLecturer extends JFrame {
 						    "Please Fill all fields and continue");
 				
 				}
-				if(empID.getText().length() > 6 ) {
+				else if(empID.getText().length() > 6 ) {
 					JOptionPane.showMessageDialog(null,
 						    "Error : Employee Id should contains 6 numbers only");
 					//empID.setText("");

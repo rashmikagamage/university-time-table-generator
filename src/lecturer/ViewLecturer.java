@@ -294,7 +294,7 @@ public class ViewLecturer extends JFrame {
 		lblBuilding.setBounds(700, 370, 100, 25);
 		contentPane.add(lblBuilding);
 		
-		String[] buildingList = {"New building", "D-block" };
+		String[] buildingList = {"New building","D-block","Engineering"};
 		building = new JComboBox(buildingList);
 		building.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -351,7 +351,9 @@ public class ViewLecturer extends JFrame {
 							    "Please Fill empid !");
 					}
 					else {
-						 
+						 if(Building == null) {
+							 Building = "New building";
+						 }
 						viewLecturerConnection viewLecConnection = new viewLecturerConnection();
 						viewLecConnection.updateLecturer(name, unChangedEmpId, Faculty, Department, Center, Building, Level, sGenerateRank,empId);
 						System.out.println(name+unChangedEmpId+Faculty+Department+Center+Building+Level+sGenerateRank+empId);

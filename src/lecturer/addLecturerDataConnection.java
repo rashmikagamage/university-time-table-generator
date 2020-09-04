@@ -14,7 +14,7 @@ public class addLecturerDataConnection {
 		        
 			try {
 		            
-			    String query="INSERT INTO `lecturers` (`lecName`,`empID`,`faculty`,`department`,`center`,`building`,`levelString`,`levelNo`,`rank`) VALUES (?,?,?,?,?,?,?,?,?)";
+			    String query="INSERT INTO `lects` (`lecName`,`empID`,`faculty`,`department`,`center`,`building`,`levelString`,`levelNo`,`rank`) VALUES (?,?,?,?,?,?,?,?,?)";
 			     ps = connection.prepareStatement(query);
 			    ps.setString(1,lecName );
 			    ps.setString(2,empID );

@@ -16,7 +16,7 @@ public class viewLecturerConnection {
 		ResultSet rs = null;
 		try {
 			String query = "SELECT `lecName` as `Name` ,`empID` as `ID`,`faculty` as `Faculty`"
-					+ ",`department` as `Department`,`center` as `Center`,`building` as `Building`,`levelString` as `Level`,`rank` as `Rank` FROM lecturers";
+					+ ",`department` as `Department`,`center` as `Center`,`building` as `Building`,`levelString` as `Level`,`rank` as `Rank` FROM lects";
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();
 		} catch (SQLException e) {
@@ -30,7 +30,7 @@ public class viewLecturerConnection {
 	public ResultSet getLecturersByEmpId(String empID){
 		ResultSet rs = null;
 		try {
-			String query = "SELECT * FROM `lecturers` WHERE `empID` = ? ";
+			String query = "SELECT * FROM `lects` WHERE `empID` = ? ";
 			ps = connection.prepareStatement(query);
 			ps.setString(1, empID);
 			
@@ -50,7 +50,7 @@ public class viewLecturerConnection {
 		try {
 			
 			
-				String query = "UPDATE `lecturers` SET `lecName` = ? , `empID` = ? , `faculty` = ? 	,`department` = ? ,`center`=? , "
+				String query = "UPDATE `lects` SET `lecName` = ? , `empID` = ? , `faculty` = ? 	,`department` = ? ,`center`=? , "
 						+ "`building` = ?, `levelString`=? , `rank`=?  where `empID` = ? ";
 				
 				ps = connection.prepareStatement(query);
@@ -75,7 +75,7 @@ public class viewLecturerConnection {
 	
 	public void deleteLecturer(String empId) {
 		
-		String query = "DELETE FROM `lecturers` WHERE `empID`=?";
+		String query = "DELETE FROM `lects` WHERE `empID`=?";
 			 try {
 				ps = connection.prepareStatement(query);
 				ps.setString(1,empId);
