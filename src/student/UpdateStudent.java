@@ -21,6 +21,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 import javax.swing.Icon;
+import javax.swing.JList;
 
 public class UpdateStudent extends JFrame {
 
@@ -328,6 +329,8 @@ public class UpdateStudent extends JFrame {
 		btnDelete.setBackground(new Color(102, 51, 255));
 		btnDelete.setBounds(706, 471, 117, 35);
 		contentPane.add(btnDelete);
+		
+		
 		
 		ImageIcon img1 = new ImageIcon(this.getClass().getResource("/home.png"));
 	}

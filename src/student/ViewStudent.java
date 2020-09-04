@@ -67,7 +67,7 @@ public class ViewStudent extends JFrame {
 		scrollPane.setBounds(98, 256, 805, 206);
 		contentPane.add(scrollPane);
 		
-		table = new JTable();
+		JTable table = new JTable();
 		scrollPane.setViewportView(table);
 		table.setFont(new Font("Consolas", Font.PLAIN, 12));
 		table.setBorder(new EmptyBorder(0, 0, 0, 0));
