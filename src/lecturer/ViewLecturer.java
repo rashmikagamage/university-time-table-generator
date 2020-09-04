@@ -69,6 +69,17 @@ public class ViewLecturer extends JFrame {
 	 * Create the frame.
 	 */
 	public ViewLecturer() {
+		
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				
+				ResultSet rs = null;
+				viewLecturerConnection viewLecConnection = new viewLecturerConnection();
+				rs = viewLecConnection.viewLecturer();
+				table.setModel(DbUtils.resultSetToTableModel(rs));
+			}
+		});
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 575);

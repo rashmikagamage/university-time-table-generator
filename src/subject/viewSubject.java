@@ -10,12 +10,15 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 
+import lecturer.viewLecturerConnection;
 import net.proteanit.sql.DbUtils;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.awt.event.ActionEvent;
@@ -78,6 +81,18 @@ public class viewSubject extends JFrame {
 	 * Create the frame.
 	 */
 	public viewSubject() {
+		
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				
+				ResultSet rs = null;
+				viewSubjectDataConnection viewSubjects = new viewSubjectDataConnection();
+				rs = viewSubjects.viewSubjects();
+				table.setModel(DbUtils.resultSetToTableModel(rs));
+				
+			}
+		});
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 575);
