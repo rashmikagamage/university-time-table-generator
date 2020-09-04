@@ -14,7 +14,7 @@ public class addDataConnection {
 	try {
             
 	    String query="INSERT INTO `students` (`year`,`sem`,`programme`,`group`,`subGroup`,`groupId`,`subGroupId`) VALUES (?,?,?,?,?,?,?)";
-	     ps = connection.prepareStatement(query);
+	    ps = connection.prepareStatement(query);
 	    ps.setString(1,year );
 	    ps.setString(2,sem );
 	    ps.setString(3,programme );
@@ -22,7 +22,6 @@ public class addDataConnection {
 	    ps.setString(5,subGroup );
 	    ps.setString(6,groupId);
 	    ps.setString(7,subGroupId );
-	    
 	    int rowsInserted = ps.executeUpdate();
             
 	} catch (Exception e) {

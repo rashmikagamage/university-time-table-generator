@@ -1,17 +1,19 @@
 package student;
-
+import home.*;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
-
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JLabel;
 import javax.swing.JButton;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class StudentHome extends JFrame {
 
@@ -46,10 +48,26 @@ public class StudentHome extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/class.png"));
+		image.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				Dashboard dashboard = new Dashboard();
+				dashboard.setVisible(true);
+				dispose();
+			}
+		});
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/home.png"));
 		image.setIcon(img);
-		image.setBounds(75, 65, 394, 375);
+		image.setBounds(10, 11, 65, 55);
 		contentPane.add(image);
+		
+		
+		
+		JLabel image1 = new JLabel("");
+		ImageIcon img1 = new ImageIcon(this.getClass().getResource("/class.png"));
+		image1.setIcon(img1);
+		image1.setBounds(75, 65, 394, 375);
+		contentPane.add(image1);
 		
 		JButton button = new JButton("Add Students");
 		button.addActionListener(new ActionListener() {
@@ -57,7 +75,7 @@ public class StudentHome extends JFrame {
 				
 				AddStudent addStudent = new AddStudent();
 				addStudent.setVisible(true);
-				dispose();
+
 			}
 		});
 		button.setForeground(Color.WHITE);
@@ -105,6 +123,8 @@ public class StudentHome extends JFrame {
 		button_3.setBackground(new Color(102, 51, 255));
 		button_3.setBounds(756, 277, 152, 89);
 		contentPane.add(button_3);
+		
+	
 		
 	}
 

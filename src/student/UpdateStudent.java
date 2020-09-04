@@ -163,8 +163,14 @@ public class UpdateStudent extends JFrame {
 				
 				updateDataConnection updateDataConnection = new updateDataConnection();
 				updateDataConnection.updateStudent(year, sem, programme, groupNo, subGroupNo, groupId, subGroupId,unChangedGroupId,unChangedSubId);
-				JOptionPane.showMessageDialog(frame,
-					    "Updated !");
+				
+				if(!subGroupNo.isEmpty()) {
+					JOptionPane.showMessageDialog(frame,
+						    "Updated! New ID is " + subGroupId);
+				}else {
+					JOptionPane.showMessageDialog(frame,
+						    "Updated! New ID is " + groupId);
+				}
 			}
 		});
 		btnUpdate.setForeground(Color.WHITE);
