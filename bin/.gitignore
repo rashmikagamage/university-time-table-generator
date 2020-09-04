@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /student/
 /lecturer/
 /subject/
@@ -18,3 +19,12 @@
 /student.png
 /student64.png
 /viewLecturer.png
+=======
+/Tags/
+/db_connection/
+/home/
+/location/
+/sprint2/
+/statistics/
+/student/
+>>>>>>> refs/remotes/origin/location-statistics

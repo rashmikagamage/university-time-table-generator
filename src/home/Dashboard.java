@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import Tags.Tags;
+import lecturer.LecturerSubjectHome;
 import student.StudentHome;
 
 public class Dashboard extends JFrame {
@@ -96,13 +97,19 @@ public class Dashboard extends JFrame {
 		button_1.setBounds(85, 267, 211, 53);
 		contentPane.add(button_1);
 		
-		JButton button_2 = new JButton("fill");
+		JButton button_2 = new JButton("Lecturer");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				LecturerSubjectHome a = new LecturerSubjectHome();
+				a.setVisible(true);
+			}
+		});
 		button_2.setForeground(Color.WHITE);
 		button_2.setBackground(new Color(0, 191, 255));
 		button_2.setBounds(85, 392, 211, 53);
 		contentPane.add(button_2);
 		
-		JButton button_3 = new JButton("fill");
+		JButton button_3 = new JButton("Statistics");
 		button_3.setForeground(Color.WHITE);
 		button_3.setBackground(new Color(0, 191, 255));
 		button_3.setBounds(703, 152, 211, 53);
