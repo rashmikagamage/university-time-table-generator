@@ -24,6 +24,8 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextField;
 import javax.swing.JTable;
 import javax.swing.JButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddTimeSlots extends JFrame {
 
@@ -31,6 +33,8 @@ public class AddTimeSlots extends JFrame {
 	private JTextField textField;
 	private JTextField endTime;
 	private JTable table;
+	private JLabel error1, error2;
+	
 	
 	
 	String tType , tStart , tEnd , tDay;
@@ -92,6 +96,22 @@ public class AddTimeSlots extends JFrame {
 		contentPane.add(lblStartTime);
 		
 		JTextField startTime = new JTextField();
+		startTime.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent ke) {
+				
+				
+				char c = ke.getKeyChar();
+	            
+	            if(Character.isLetter(c))
+	            {
+	            	error1.setText("* Enter only numeric digits");
+	            }
+	            else {
+	            	error1.setText("");
+	            }
+			}
+		});
 		startTime.setBounds(564, 165, 197, 25);
 		contentPane.add(startTime);
 		startTime.setColumns(10);
@@ -107,6 +127,23 @@ public class AddTimeSlots extends JFrame {
 		contentPane.add(lblEndTime);
 		
 		JTextField endTime = new JTextField();
+		endTime.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent ke) {
+				
+				char c = ke.getKeyChar();
+	            
+	            if(Character.isLetter(c))
+	            {
+	            	error2.setText("* Enter only numeric digits");
+	            }
+	            else {
+	            	error2.setText("");
+	            }
+				
+				
+			}
+		});
 		endTime.setBounds(561, 234, 200, 25);
 		contentPane.add(endTime);
 		endTime.setColumns(10);
@@ -167,6 +204,12 @@ public class AddTimeSlots extends JFrame {
 						    "Please select Day");
 					
 				}
+				else 
+					
+					if(Integer.parseInt(tStart) >=2400|| Integer.parseInt(tEnd) >=2400) {
+						JOptionPane.showMessageDialog(null,
+							    "Enter a value between 0hrs and 24hrs");
+				}
 				
 				else {
 					
@@ -208,6 +251,16 @@ public class AddTimeSlots extends JFrame {
 		image.setIcon(img);
 		image.setBounds(91, 88, 263, 335);
 		contentPane.add(image);
+		
+		error1 = new JLabel("");
+		error1.setForeground(Color.RED);
+		error1.setBounds(574, 201, 187, 14);
+		contentPane.add(error1);
+		
+		 error2 = new JLabel("");
+		error2.setForeground(Color.RED);
+		error2.setBounds(571, 274, 190, 14);
+		contentPane.add(error2);
 		
 		
 	}

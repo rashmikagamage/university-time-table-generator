@@ -23,11 +23,14 @@ import javax.swing.JTextField;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddWorkingDaysAndHours extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
+	private JLabel error3;
 	
 	String wType , wTime;
 	Integer wNo;
@@ -112,6 +115,21 @@ public class AddWorkingDaysAndHours extends JFrame {
 		
 		
 		JTextField workingTime = new JTextField();
+		workingTime.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent ke) {
+				
+				char c = ke.getKeyChar();
+	            
+	            if(Character.isLetter(c))
+	            {
+	            	error3.setText("* Enter only numeric digits");
+	            }
+	            else {
+	            	error3.setText("");
+	            }
+			}
+		});
 		workingTime.setBounds(538, 208, 200, 25);
 		contentPane.add(workingTime);
 		workingTime.setColumns(10);
@@ -178,5 +196,10 @@ public class AddWorkingDaysAndHours extends JFrame {
 		image.setIcon(img);
 		image.setBounds(48, 105, 300, 300);
 		contentPane.add(image);
+		
+		error3 = new JLabel("");
+		error3.setForeground(Color.RED);
+		error3.setBounds(538, 244, 197, 14);
+		contentPane.add(error3);
 	}
 }
