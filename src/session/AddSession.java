@@ -38,10 +38,18 @@ public class AddSession extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField lecturers;
-	String sLec="Computing";
+	String sLec="Computing",sTag="",sGroup,sCount,sDuration,sSubName,sLects;
+	String sSub = "";
 	JComboBox lecturerList , subList;
+	JComboBox tagList,grpList;
 	String[] gav;
 	Connection connection = null;
+	
+	ArrayList<String> subCodes = new ArrayList<String>();
+	private JTextField subName;
+	private JTextField count;
+	private JTextField duration;
+
 	/**
 	 * Launch the application.
 	 */
@@ -72,6 +80,27 @@ public class AddSession extends JFrame {
 			while(set.next())
 			{
 				lecturerList.addItem(set.getString("lecName"));
+				
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+	
+private void tagDropDown() {
+		
+		try {
+			
+			String sub = "SELECT * FROM Tags";
+			Statement statement = connection.createStatement();
+			ResultSet set = statement.executeQuery(sub);
+			
+			while(set.next())
+			{
+				tagList.addItem(set.getString("Tag"));
+				
 			}
 		}
 		catch(Exception e)
@@ -91,6 +120,7 @@ public class AddSession extends JFrame {
 			while(set.next())
 			{
 				subList.addItem(set.getString("subName"));
+				subCodes.add(set.getString("subCode"));
 			}
 		}
 		catch(Exception e)
@@ -98,6 +128,74 @@ public class AddSession extends JFrame {
 			
 		}
 	}
+  
+  private void groupDropDown() {
+		
+		try {
+			
+			String lec = "SELECT * FROM students";
+			Statement statement = connection.createStatement();
+			ResultSet set = statement.executeQuery(lec);
+			
+			while(set.next())
+			{
+				grpList.addItem(set.getString("groupId"));
+				
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+  
+  private void subGroupDropDown() {
+		
+		try {
+			
+			String lec = "SELECT * FROM students";
+			Statement statement = connection.createStatement();
+			ResultSet set = statement.executeQuery(lec);
+			
+			while(set.next())
+			{
+				grpList.addItem(set.getString("subGroupId"));
+				
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
+	}
+  
+  public void subjectName(String name) {
+	  
+	  System.out.println(name);
+	  
+	  try {
+			
+			String lec = "SELECT * FROM subjects where subName='"+name+"'";
+			Statement statement = connection.createStatement();
+			ResultSet set = statement.executeQuery(lec);
+			
+			while(set.next())
+			{
+			
+				System.out.println(set.getString("subCode"));
+				subName.setText(set.getString("subCode"));
+			}
+		}
+		catch(Exception e)
+		{
+			
+		}
+	  
+  }
+  
+ // select subCode
+ // from subjects
+ // where subName = "English"
 	
 	
 	public AddSession() {
@@ -144,25 +242,25 @@ public class AddSession extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblAddLecturer = new JLabel("ADD LECTURER");
+		JLabel lblAddLecturer = new JLabel("ADD SESSION");
 		lblAddLecturer.setForeground(new Color(0, 51, 51));
 		lblAddLecturer.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblAddLecturer.setBounds(286, 35, 206, 59);
+		lblAddLecturer.setBounds(286, 11, 206, 59);
 		contentPane.add(lblAddLecturer);
 		
 		JLabel image = new JLabel("");
 		ImageIcon img = new ImageIcon(this.getClass().getResource("/class1.png"));
 		image.setIcon(img);
-		image.setBounds(37, 108, 300, 300);
+		image.setBounds(49, 130, 300, 300);
 		contentPane.add(image);
 		
 		JLabel lblLecturers = new JLabel("Lecturer");
 		lblLecturers.setForeground(new Color(25, 25, 112));
 		lblLecturers.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblLecturers.setBounds(429, 146, 100, 14);
+		lblLecturers.setBounds(418, 97, 100, 14);
 		contentPane.add(lblLecturers);
 		
-		//String[] facList = {"Computing", "Engineering", "Business"};
+		
 		
 		ArrayList<String> le = new ArrayList<String>();
 	    
@@ -176,7 +274,7 @@ public class AddSession extends JFrame {
 
 			}
 		});
-		lecturerList.setBounds(528, 143, 197, 25);
+		lecturerList.setBounds(526, 94, 197, 25);
 		contentPane.add(lecturerList);
 		
 		
@@ -208,7 +306,7 @@ public class AddSession extends JFrame {
 		});
 		btnAddLec.setForeground(Color.WHITE);
 		btnAddLec.setBackground(new Color(102, 51, 255));
-		btnAddLec.setBounds(753, 144, 89, 23);
+		btnAddLec.setBounds(746, 95, 89, 23);
 		contentPane.add(btnAddLec);
 		
 		lecturers = new JTextField();
@@ -217,7 +315,7 @@ public class AddSession extends JFrame {
 		
 
 		lecturers.setColumns(10);
-		lecturers.setBounds(526, 195, 316, 59);
+		lecturers.setBounds(526, 130, 316, 59);
 		contentPane.add(lecturers);
 		
 		
@@ -229,15 +327,126 @@ public class AddSession extends JFrame {
 		JLabel lblSubject = new JLabel("Subject");
 		lblSubject.setForeground(new Color(25, 25, 112));
 		lblSubject.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblSubject.setBounds(429, 294, 100, 14);
+		lblSubject.setBounds(418, 315, 100, 14);
 		contentPane.add(lblSubject);
 		
 		subList = new JComboBox();
-		subList.setBounds(528, 281, 197, 25);
+		subList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				sSub =  (String)subList.getSelectedItem();
+				
+				subjectName(sSub);
+				
+			}
+		});
+		subList.setBounds(526, 310, 197, 25);
 		contentPane.add(subList);
+		
+		tagList = new JComboBox();
+		tagList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				sTag = (String)tagList.getSelectedItem();
+				
+				if(sTag.equals("Lecture")) {
+					grpList.removeAllItems();
+					groupDropDown();
+				}
+				else if(sTag.equals("Tute")) {
+					grpList.removeAllItems();
+					groupDropDown();
+				}
+				else {
+					grpList.removeAllItems();
+					subGroupDropDown();
+				}
+			}
+		});
+		tagList.setBounds(526, 213, 197, 25);
+		contentPane.add(tagList);
+		
+		JLabel lblTag = new JLabel("Tag");
+		lblTag.setForeground(new Color(25, 25, 112));
+		lblTag.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblTag.setBounds(418, 211, 100, 25);
+		contentPane.add(lblTag);
+		
+		grpList = new JComboBox();
+		grpList.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				sGroup = (String)grpList.getSelectedItem();
+				
+				System.out.println(sGroup);
+			}
+		});
+		grpList.setBounds(526, 260, 197, 25);
+		contentPane.add(grpList);
+		
+		JLabel lblGroup = new JLabel("Group");
+		lblGroup.setForeground(new Color(25, 25, 112));
+		lblGroup.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblGroup.setBounds(418, 258, 100, 25);
+		contentPane.add(lblGroup);
+		
+		subName = new JTextField();
+		subName.setEditable(false);
+		subName.setBounds(526, 361, 197, 25);
+		contentPane.add(subName);
+		subName.setColumns(10);
+		
+		JLabel lblSubjectId = new JLabel("Subject ID");
+		lblSubjectId.setForeground(new Color(25, 25, 112));
+		lblSubjectId.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblSubjectId.setBounds(418, 364, 100, 14);
+		contentPane.add(lblSubjectId);
+		
+		count = new JTextField();
+		count.setColumns(10);
+		count.setBounds(526, 408, 197, 25);
+		contentPane.add(count);
+		
+		duration = new JTextField();
+		duration.setColumns(10);
+		duration.setBounds(526, 459, 197, 25);
+		contentPane.add(duration);
+		
+		JButton btnAddSession = new JButton("Add");
+		btnAddSession.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				sCount = count.getText().toString();
+				sDuration = duration.getText().toString();
+				sSubName = subName.getText().toString();
+				sLects = lecturers.getText().toString();
+				
+				System.out.println(sLects);
+
+				
+				
+			}
+		});
+		btnAddSession.setForeground(Color.WHITE);
+		btnAddSession.setBackground(new Color(102, 51, 255));
+		btnAddSession.setBounds(580, 512, 89, 23);
+		contentPane.add(btnAddSession);
+		
+		JLabel lblStudentCount = new JLabel("Student Count");
+		lblStudentCount.setForeground(new Color(25, 25, 112));
+		lblStudentCount.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblStudentCount.setBounds(418, 413, 100, 14);
+		contentPane.add(lblStudentCount);
+		
+		JLabel lblDuration = new JLabel("Duration");
+		lblDuration.setForeground(new Color(25, 25, 112));
+		lblDuration.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDuration.setBounds(418, 464, 100, 14);
+		contentPane.add(lblDuration);
 		
 		lecDropDown();
 		subDropDown();
+		tagDropDown();
 		
 	}
 }
