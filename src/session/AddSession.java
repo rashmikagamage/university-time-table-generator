@@ -10,6 +10,7 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import db_connection.DB_Connection;
+import lecturer.addLecturerDataConnection;
 import lecturer.viewLecturerConnection;
 import net.proteanit.sql.DbUtils;
 
@@ -33,12 +34,14 @@ import java.util.logging.Logger;
 import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 
 public class AddSession extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField lecturers;
-	String sLec="Computing",sTag="",sGroup,sCount,sDuration,sSubName,sLects;
+	String sLec="Computing",sTag="",sGroup,sSubID,sLects;
+	int sCount,sDuration;
 	String sSub = "";
 	JComboBox lecturerList , subList;
 	JComboBox tagList,grpList;
@@ -46,7 +49,7 @@ public class AddSession extends JFrame {
 	Connection connection = null;
 	
 	ArrayList<String> subCodes = new ArrayList<String>();
-	private JTextField subName;
+	private JTextField subId;
 	private JTextField count;
 	private JTextField duration;
 
@@ -183,7 +186,7 @@ private void tagDropDown() {
 			{
 			
 				System.out.println(set.getString("subCode"));
-				subName.setText(set.getString("subCode"));
+				subId.setText(set.getString("subCode"));
 			}
 		}
 		catch(Exception e)
@@ -219,18 +222,18 @@ private void tagDropDown() {
 
 		
 		
-		addComponentListener(new ComponentAdapter() {
-			
-			@Override
-			public void componentShown(ComponentEvent e) {
-				
-				ResultSet rs = null;
-				addSessionDataConnection addSession = new addSessionDataConnection();
-				rs = addSession.loadLecturer();
-				// table.setModel(DbUtils.resultSetToTableModel(rs));
-				//lecturerList.add(DbUtils.resultSetToNestedList(rs));
-			}
-		});
+//		addComponentListener(new ComponentAdapter() {
+//			
+//			@Override
+//			public void componentShown(ComponentEvent e) {
+//				
+//				ResultSet rs = null;
+//				addSessionDataConnection addSession = new addSessionDataConnection();
+//				rs = addSession.loadLecturer();
+//				// table.setModel(DbUtils.resultSetToTableModel(rs));
+//				//lecturerList.add(DbUtils.resultSetToNestedList(rs));
+//			}
+//		});
 		
 
 		setResizable(false);
@@ -298,6 +301,7 @@ private void tagDropDown() {
 				System.out.println(listString);
 				
 				lecturers.setText(listString);
+				
 				
 				
 				
@@ -390,11 +394,11 @@ private void tagDropDown() {
 		lblGroup.setBounds(418, 258, 100, 25);
 		contentPane.add(lblGroup);
 		
-		subName = new JTextField();
-		subName.setEditable(false);
-		subName.setBounds(526, 361, 197, 25);
-		contentPane.add(subName);
-		subName.setColumns(10);
+		subId = new JTextField();
+		subId.setEditable(false);
+		subId.setBounds(526, 361, 197, 25);
+		contentPane.add(subId);
+		subId.setColumns(10);
 		
 		JLabel lblSubjectId = new JLabel("Subject ID");
 		lblSubjectId.setForeground(new Color(25, 25, 112));
@@ -416,13 +420,35 @@ private void tagDropDown() {
 		btnAddSession.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				sCount = count.getText().toString();
-				sDuration = duration.getText().toString();
-				sSubName = subName.getText().toString();
+				sCount = Integer.parseInt(count.getText().toString());
+				sDuration =  Integer.parseInt(duration.getText().toString());
+
+				sSubID = subId.getText().toString();
 				sLects = lecturers.getText().toString();
 				
-				System.out.println(sLects);
+				
+				// sGroup, sTag,sSub
+				
+				if(sCount <= 0 || sDuration <=0)
+				{
+					
+				}
+				else {
+					
+					
+					addSessionDataConnection addSession = new addSessionDataConnection();
+					addSession.insertSession(sLects, sSub, sSubID, sTag, sGroup, sCount, sDuration);
+					
+					JOptionPane.showMessageDialog(null,
+						    "Session Added !");
+					
+					count.setText("");
+					duration.setText("");
+					subId.setText("");
+					lecturers.setText("");
+					le.clear();
 
+				}
 				
 				
 			}
