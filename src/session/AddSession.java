@@ -248,7 +248,7 @@ private void tagDropDown() {
 		JLabel lblAddLecturer = new JLabel("ADD SESSION");
 		lblAddLecturer.setForeground(new Color(0, 51, 51));
 		lblAddLecturer.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblAddLecturer.setBounds(286, 11, 206, 59);
+		lblAddLecturer.setBounds(398, 11, 206, 59);
 		contentPane.add(lblAddLecturer);
 		
 		JLabel image = new JLabel("");

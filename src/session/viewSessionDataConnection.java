@@ -11,12 +11,12 @@ public class viewSessionDataConnection {
 	Connection connection=obj_DB_Connection.get_connection();
 	PreparedStatement ps=null;
 	
-public ResultSet showByLecturer() {
+public ResultSet viewSessions() {
 		
 		ResultSet rs = null;
 		try {
-			String query = "SELECT `lecName` as `Name` ,`empID` as `ID`,`faculty` as `Faculty`"
-					+ ",`department` as `Department`,`center` as `Center`,`building` as `Building`,`levelString` as `Level`,`rank` as `Rank` FROM sessions";
+			String query = "SELECT `lects` as `Lecturer(s)` ,`subject` as `Subject`,`code` as `Code`"
+					+ ",`tag` as `Tag`,`groupId` as `Group Id`,`count` as `Count`,`duration` as `Duration` FROM sessions";
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();
 		} catch (SQLException e) {
