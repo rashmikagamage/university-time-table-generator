@@ -61,7 +61,7 @@ public class SessionsHome extends JFrame {
 		});
 		btnAddLecturers.setForeground(Color.WHITE);
 		btnAddLecturers.setBackground(new Color(102, 51, 255));
-		btnAddLecturers.setBounds(434, 182, 152, 89);
+		btnAddLecturers.setBounds(434, 144, 152, 89);
 		contentPane.add(btnAddLecturers);
 		
 		JButton btnAddLecturers_1 = new JButton("View Sessions");
@@ -74,7 +74,7 @@ public class SessionsHome extends JFrame {
 		});
 		btnAddLecturers_1.setForeground(Color.WHITE);
 		btnAddLecturers_1.setBackground(new Color(102, 51, 255));
-		btnAddLecturers_1.setBounds(647, 182, 152, 89);
+		btnAddLecturers_1.setBounds(647, 144, 152, 89);
 		contentPane.add(btnAddLecturers_1);
 		
 		JButton btnAddLecturers_2 = new JButton("Filter Sessions");
@@ -87,19 +87,19 @@ public class SessionsHome extends JFrame {
 		});
 		btnAddLecturers_2.setForeground(Color.WHITE);
 		btnAddLecturers_2.setBackground(new Color(102, 51, 255));
-		btnAddLecturers_2.setBounds(434, 320, 152, 89);
+		btnAddLecturers_2.setBounds(434, 297, 152, 89);
 		contentPane.add(btnAddLecturers_2);
 		
 		JButton btnAddLecturers_3 = new JButton("Add Sessions");
 		btnAddLecturers_3.setForeground(Color.WHITE);
 		btnAddLecturers_3.setBackground(new Color(102, 51, 255));
-		btnAddLecturers_3.setBounds(647, 320, 152, 89);
+		btnAddLecturers_3.setBounds(647, 297, 152, 89);
 		contentPane.add(btnAddLecturers_3);
 		
 		JLabel image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/lectureSubjectHome.png"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/session9.png"));
 		image.setIcon(img);
-		image.setBounds(71, 85, 394, 375);
+		image.setBounds(72, 70, 394, 375);
 		contentPane.add(image);
 		
 		

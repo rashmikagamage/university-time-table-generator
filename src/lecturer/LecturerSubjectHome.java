@@ -61,9 +61,9 @@ public class LecturerSubjectHome extends JFrame {
 		
 		
 		JLabel image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/lectureSubjectHome.png"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/session10.png"));
 		image.setIcon(img);
-		image.setBounds(144, 48, 394, 375);
+		image.setBounds(154, 84, 394, 375);
 		contentPane.add(image);
 		
 		JButton btnAddLecturers = new JButton("Add Lecturers");
@@ -79,7 +79,7 @@ public class LecturerSubjectHome extends JFrame {
 		});
 		btnAddLecturers.setForeground(Color.WHITE);
 		btnAddLecturers.setBackground(new Color(102, 51, 255));
-		btnAddLecturers.setBounds(573, 154, 152, 89);
+		btnAddLecturers.setBounds(539, 150, 152, 89);
 		contentPane.add(btnAddLecturers);
 		
 		JButton btnVieweditupdate = new JButton("View,Edit,Delete Lecturers");
@@ -95,7 +95,7 @@ public class LecturerSubjectHome extends JFrame {
 		});
 		btnVieweditupdate.setForeground(Color.WHITE);
 		btnVieweditupdate.setBackground(new Color(102, 51, 255));
-		btnVieweditupdate.setBounds(756, 154, 152, 89);
+		btnVieweditupdate.setBounds(742, 150, 152, 89);
 		contentPane.add(btnVieweditupdate);
 		
 		JButton btnAddSubjects = new JButton("Add Subjects");
@@ -109,7 +109,7 @@ public class LecturerSubjectHome extends JFrame {
 		});
 		btnAddSubjects.setForeground(Color.WHITE);
 		btnAddSubjects.setBackground(new Color(102, 51, 255));
-		btnAddSubjects.setBounds(573, 277, 152, 89);
+		btnAddSubjects.setBounds(539, 306, 152, 89);
 		contentPane.add(btnAddSubjects);
 		
 		JButton btnVieweditdeleteSubjects = new JButton("View,Edit,Delete Subjects");
@@ -124,7 +124,7 @@ public class LecturerSubjectHome extends JFrame {
 		});
 		btnVieweditdeleteSubjects.setForeground(Color.WHITE);
 		btnVieweditdeleteSubjects.setBackground(new Color(102, 51, 255));
-		btnVieweditdeleteSubjects.setBounds(756, 277, 152, 89);
+		btnVieweditdeleteSubjects.setBounds(742, 306, 152, 89);
 		contentPane.add(btnVieweditdeleteSubjects);
 		
 		JLabel image_1 = new JLabel("");

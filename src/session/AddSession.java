@@ -35,6 +35,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JTextPane;
 import javax.swing.JList;
 import javax.swing.JOptionPane;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 public class AddSession extends JFrame {
 
@@ -52,6 +54,7 @@ public class AddSession extends JFrame {
 	private JTextField subId;
 	private JTextField count;
 	private JTextField duration;
+	private JLabel errCount,errDuration;
 
 	/**
 	 * Launch the application.
@@ -407,11 +410,47 @@ private void tagDropDown() {
 		contentPane.add(lblSubjectId);
 		
 		count = new JTextField();
+		count.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				  
+	            char c = e.getKeyChar();
+	            
+	            if(Character.isLetter(c))
+	            {
+	            	errCount.setText("* Enter only numeric digits(0-9) *");
+	            }
+	            else {
+	            	errCount.setText("");
+	            }
+	            
+				
+			}
+		});
 		count.setColumns(10);
 		count.setBounds(526, 408, 197, 25);
 		contentPane.add(count);
 		
 		duration = new JTextField();
+		duration.addKeyListener(new KeyAdapter() {
+			@Override
+			public void keyPressed(KeyEvent e) {
+				
+				  
+	            char c = e.getKeyChar();
+	            
+	            if(Character.isLetter(c))
+	            {
+	            	errDuration.setText("* Enter only numeric digits(0-9) *");
+	            }
+	            else {
+	            	errDuration.setText("");
+	            }
+	            
+				
+			}
+		});
 		duration.setColumns(10);
 		duration.setBounds(526, 459, 197, 25);
 		contentPane.add(duration);
@@ -469,6 +508,18 @@ private void tagDropDown() {
 		lblDuration.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		lblDuration.setBounds(418, 464, 100, 14);
 		contentPane.add(lblDuration);
+		
+		errCount = new JLabel("");
+		errCount.setForeground(Color.RED);
+		errCount.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		errCount.setBounds(746, 413, 206, 14);
+		contentPane.add(errCount);
+		
+		errDuration = new JLabel("");
+		errDuration.setForeground(Color.RED);
+		errDuration.setFont(new Font("Tahoma", Font.PLAIN, 12));
+		errDuration.setBounds(746, 464, 218, 14);
+		contentPane.add(errDuration);
 		
 		lecDropDown();
 		subDropDown();
