@@ -139,7 +139,7 @@ public class AddStudent extends JFrame {
 		year.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-			        sYear = (String)year.getSelectedItem();
+			      sYear = (String)year.getSelectedItem();
 			      
 			}
 			

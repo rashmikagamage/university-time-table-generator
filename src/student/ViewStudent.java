@@ -154,6 +154,12 @@ public class ViewStudent extends JFrame {
 		contentPane.add(button_1);
 		
 		ImageIcon img1 = new ImageIcon(this.getClass().getResource("/home.png"));
+		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 439, 1037, 119);
+		contentPane.add(image2);
 	}
 	
 }

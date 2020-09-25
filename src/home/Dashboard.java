@@ -14,8 +14,10 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import ConsecutiveSession.ConsecutiveSession;
 import Tags.Tags;
 import lecturer.LecturerSubjectHome;
+import parallelSession.ParallelSes;
 import student.StudentHome;
 
 public class Dashboard extends JFrame {
@@ -62,70 +64,97 @@ public class Dashboard extends JFrame {
 		label.setBounds(444, 45, 164, 27);
 		contentPane.add(label);
 		
-		JButton button = new JButton("Students");
-		button.addActionListener(new ActionListener() {
+		JButton btnStudentsManagement = new JButton("Students Management");
+		btnStudentsManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
 				StudentHome studentHome = new StudentHome();
 				studentHome.setVisible(true);
-				dispose();
+				
 				
 			}
 		});
-		button.setForeground(Color.WHITE);
-		button.setBackground(new Color(0, 191, 255));
-		button.setBounds(85, 152, 211, 53);
-		contentPane.add(button);
+		btnStudentsManagement.setForeground(Color.WHITE);
+		btnStudentsManagement.setBackground(new Color(25, 25, 112));
+		btnStudentsManagement.setBounds(85, 101, 211, 53);
+		contentPane.add(btnStudentsManagement);
 		
 
 		JLabel image = new JLabel("");
+		image.setBackground(new Color(25, 25, 112));
 		ImageIcon img = new ImageIcon(this.getClass().getResource("/dashboard.png"));
 		image.setIcon(img);
-		image.setBounds(360, 122, 384, 358);
+		image.setBounds(362, 101, 384, 358);
 		contentPane.add(image);
 		
-		JButton button_1 = new JButton("Tags");
-		button_1.addActionListener(new ActionListener() {
+		JButton btnTagsManagement = new JButton("Tags Management");
+		btnTagsManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				Tags t = new Tags();
 				t.setVisible(true);
-				dispose();
 			}
 		});
-		button_1.setForeground(Color.WHITE);
-		button_1.setBackground(new Color(0, 191, 255));
-		button_1.setBounds(85, 267, 211, 53);
-		contentPane.add(button_1);
+		btnTagsManagement.setForeground(Color.WHITE);
+		btnTagsManagement.setBackground(new Color(25, 25, 112));
+		btnTagsManagement.setBounds(85, 205, 211, 53);
+		contentPane.add(btnTagsManagement);
 		
-		JButton button_2 = new JButton("Lecturer");
-		button_2.addActionListener(new ActionListener() {
+		JButton btnLecturerManagement = new JButton("Lecturer Management");
+		btnLecturerManagement.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				LecturerSubjectHome a = new LecturerSubjectHome();
 				a.setVisible(true);
 			}
 		});
-		button_2.setForeground(Color.WHITE);
-		button_2.setBackground(new Color(0, 191, 255));
-		button_2.setBounds(85, 392, 211, 53);
-		contentPane.add(button_2);
+		btnLecturerManagement.setForeground(Color.WHITE);
+		btnLecturerManagement.setBackground(new Color(25, 25, 112));
+		btnLecturerManagement.setBounds(85, 301, 211, 53);
+		contentPane.add(btnLecturerManagement);
 		
-		JButton button_3 = new JButton("Statistics");
-		button_3.setForeground(Color.WHITE);
-		button_3.setBackground(new Color(0, 191, 255));
-		button_3.setBounds(703, 152, 211, 53);
-		contentPane.add(button_3);
+		JButton btnStatisticsManagement = new JButton("View Statistics ");
+		btnStatisticsManagement.setForeground(Color.WHITE);
+		btnStatisticsManagement.setBackground(new Color(25, 25, 112));
+		btnStatisticsManagement.setBounds(703, 101, 211, 53);
+		contentPane.add(btnStatisticsManagement);
 		
-		JButton button_4 = new JButton("fill");
+		JButton button_4 = new JButton("Consecutive Session Management");
+		button_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ConsecutiveSession   c = new ConsecutiveSession();
+				c.setVisible(true);
+				
+			}
+		});
 		button_4.setForeground(Color.WHITE);
-		button_4.setBackground(new Color(0, 191, 255));
-		button_4.setBounds(703, 267, 211, 53);
+		button_4.setBackground(new Color(25, 25, 112));
+		button_4.setBounds(703, 205, 211, 53);
 		contentPane.add(button_4);
 		
 		JButton button_5 = new JButton("fill");
 		button_5.setForeground(Color.WHITE);
-		button_5.setBackground(new Color(0, 191, 255));
-		button_5.setBounds(703, 392, 211, 53);
+		button_5.setBackground(new Color(25, 25, 112));
+		button_5.setBounds(703, 301, 211, 53);
 		contentPane.add(button_5);
+		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 439, 1037, 119);
+		contentPane.add(image2);
+		
+		JButton btnSessionManagement = new JButton("Parallel Session Management");
+		btnSessionManagement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ParallelSes p = new ParallelSes();
+				p.setVisible(true);
+				
+			}
+		});
+		btnSessionManagement.setForeground(Color.WHITE);
+		btnSessionManagement.setBackground(new Color(25, 25, 112));
+		btnSessionManagement.setBounds(85, 397, 211, 53);
+		contentPane.add(btnSessionManagement);
 		
 	}
 

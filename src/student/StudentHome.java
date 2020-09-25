@@ -124,6 +124,11 @@ public class StudentHome extends JFrame {
 		button_3.setBounds(756, 277, 152, 89);
 		contentPane.add(button_3);
 		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 439, 1037, 119);
+		contentPane.add(image2);
 	
 		
 	}

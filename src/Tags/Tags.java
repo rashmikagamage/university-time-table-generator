@@ -207,6 +207,12 @@ public class Tags extends JFrame {
 		btnUpdate.setBounds(855, 417, 89, 23);
 		contentPane.add(btnUpdate);
 		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 439, 1037, 119);
+		contentPane.add(image2);
+		
 		
 	}
 }
