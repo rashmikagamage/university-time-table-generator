@@ -102,7 +102,18 @@ public class SessionsHome extends JFrame {
 		image.setBounds(72, 70, 394, 375);
 		contentPane.add(image);
 		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(-12, 443, 1037, 119);
+		contentPane.add(image2);
+		
+		//JLabel image2 = new JLabel("");
+		//ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		//image2.setIcon(img2);
+		//image2.setBounds(0, 439, 1037, 119);
+		//contentPane.add(image2);
+		
 		
 	}
-
 }

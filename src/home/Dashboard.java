@@ -18,6 +18,7 @@ import ConsecutiveSession.ConsecutiveSession;
 import Tags.Tags;
 import lecturer.LecturerSubjectHome;
 import parallelSession.ParallelSes;
+import session.SessionsHome;
 import student.StudentHome;
 
 public class Dashboard extends JFrame {
@@ -131,11 +132,18 @@ public class Dashboard extends JFrame {
 		button_4.setBounds(703, 205, 211, 53);
 		contentPane.add(button_4);
 		
-		JButton button_5 = new JButton("fill");
-		button_5.setForeground(Color.WHITE);
-		button_5.setBackground(new Color(25, 25, 112));
-		button_5.setBounds(703, 301, 211, 53);
-		contentPane.add(button_5);
+		JButton btnSessionManagement_1 = new JButton("Session Management");
+		btnSessionManagement_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				SessionsHome s = new SessionsHome();
+				s.setVisible(true);
+			}
+		});
+		btnSessionManagement_1.setForeground(Color.WHITE);
+		btnSessionManagement_1.setBackground(new Color(25, 25, 112));
+		btnSessionManagement_1.setBounds(703, 301, 211, 53);
+		contentPane.add(btnSessionManagement_1);
 		
 		JLabel image2 = new JLabel("");
 		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
@@ -157,5 +165,4 @@ public class Dashboard extends JFrame {
 		contentPane.add(btnSessionManagement);
 		
 	}
-
 }
