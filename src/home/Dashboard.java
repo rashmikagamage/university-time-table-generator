@@ -131,7 +131,13 @@ public class Dashboard extends JFrame {
 		button_4.setBounds(703, 205, 211, 53);
 		contentPane.add(button_4);
 		
-		JButton button_5 = new JButton("fill");
+		JButton button_5 = new JButton("Session Management");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				
+			}
+		});
 		button_5.setForeground(Color.WHITE);
 		button_5.setBackground(new Color(25, 25, 112));
 		button_5.setBounds(703, 301, 211, 53);
@@ -156,6 +162,17 @@ public class Dashboard extends JFrame {
 		btnSessionManagement.setBounds(85, 397, 211, 53);
 		contentPane.add(btnSessionManagement);
 		
+		JButton button_6 = new JButton("Subject Management");
+		button_6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+			}
+		});
+		button_6.setForeground(Color.WHITE);
+		button_6.setBackground(new Color(25, 25, 112));
+		button_6.setBounds(703, 397, 211, 53);
+		contentPane.add(button_6);
+		
 	}
-
 }
