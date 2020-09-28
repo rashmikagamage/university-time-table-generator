@@ -76,7 +76,7 @@ public class EditAndDeleteTimeslots extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ViewAll frame = new ViewAll();
+					EditAndDeleteTimeslots frame = new EditAndDeleteTimeslots();
 					frame.setVisible(true);
 					
 				
