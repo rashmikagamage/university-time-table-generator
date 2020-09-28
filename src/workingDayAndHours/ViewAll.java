@@ -27,21 +27,33 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JComboBox;
+import javax.swing.ButtonGroup;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JCheckBox;
+import javax.swing.JRadioButton;
 
 public class ViewAll extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField SearchEmpTextF;
-	
+	private JCheckBox chckbxMonday,chckbxTuesday,chckbxWednesday,chckbxThursday,chckbxFriday,chckbxSaturday,chckbxSunday;
+	private JRadioButton rdbtnWeekday, rdbtnWeekend;
+	private JComboBox cbweekDays;
+		
 	
 	
 	String wdType,wdTime;
+	String wType;
+	Boolean mon,tue,wed,thu,fri,sat,sun;
+	Integer wNoDays;
+	
 	JFrame frame = new JFrame("Swing Tester");
-	JComboBox wdNoDaysCB,wdTypeCB;
+	JComboBox wdTypeCB;
 	JTextField wdWorkTimeF;
-	Integer noDays, empId;
+	Integer  empId;
+	private JLabel lblDays;
+	private JLabel lblNoDays;
 
 	/**
 	 * Launch the application.
@@ -75,7 +87,7 @@ public class ViewAll extends JFrame {
 		contentPane.setLayout(null);
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(169, 42, 805, 176);
+		scrollPane.setBounds(169, 42, 805, 100);
 		contentPane.add(scrollPane);
 
 		
@@ -86,7 +98,7 @@ public class ViewAll extends JFrame {
 		table.setBackground(new Color(255, 250, 250));
 		scrollPane.setViewportView(table);
 		
-		JButton btnView = new JButton("View All");
+		JButton btnView = new JButton("Show");
 		btnView.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -100,120 +112,35 @@ public class ViewAll extends JFrame {
 		});
 		btnView.setForeground(Color.WHITE);
 		btnView.setBackground(new Color(102, 51, 255));
-		btnView.setBounds(444, 229, 89, 25);
+		btnView.setBounds(529, 164, 89, 25);
 		contentPane.add(btnView);
 		
 		JLabel wdhID = new JLabel("Working Day ID");
 		wdhID.setForeground(new Color(25, 25, 112));
 		wdhID.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		wdhID.setBounds(270, 264, 116, 22);
+		wdhID.setBounds(270, 210, 116, 22);
 		contentPane.add(wdhID);
 		
 		JTextField SearchwdhIDTextF = new JTextField();
 		SearchwdhIDTextF.setText("");
 		SearchwdhIDTextF.setColumns(10);
-		SearchwdhIDTextF.setBounds(396, 265, 199, 25);
+		SearchwdhIDTextF.setBounds(396, 211, 199, 25);
 		contentPane.add(SearchwdhIDTextF);
 		
-		JButton btnSearchwdhId = new JButton("Search");
-		btnSearchwdhId.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				
-				
-				empId = Integer.parseInt(SearchwdhIDTextF.getText().toString());
-				
-				addDataViewAll viewLecConnection = new addDataViewAll();
-				ResultSet rs = viewLecConnection.getDaysById(empId);
-				
-
-				try {
-					
-					if(!rs.isBeforeFirst()) {
-						JOptionPane.showMessageDialog(frame,
-							    "No Data Found !");
-						SearchwdhIDTextF.setText("");
-						
-						
-						
-					}else {
-						
-						while(rs.next()) {
-							
-							wdTypeCB.setSelectedItem(rs.getString(1));
-							wdNoDaysCB.setSelectedItem(rs.getString(2));
-							
-							wdWorkTimeF.setText(rs.getString(3));
-							
-						}
-					}
-				} catch (SQLException e2) {
-					// TODO Auto-generated catch block
-					e2.printStackTrace();
-				}
-				
-				
-				
-				
-			}
-		});
-		btnSearchwdhId.setForeground(Color.WHITE);
-		btnSearchwdhId.setBackground(new Color(102, 51, 255));
-		btnSearchwdhId.setBounds(631, 266, 89, 23);
-		contentPane.add(btnSearchwdhId);
-		
-		JTextField wdWorkTimeF = new JTextField();
-		wdWorkTimeF.setText("");
-		wdWorkTimeF.setColumns(10);
-		wdWorkTimeF.setBounds(396, 425, 199, 25);
-		contentPane.add(wdWorkTimeF);
-		
-		JLabel workTime = new JLabel("Work Time");
-		workTime.setForeground(new Color(25, 25, 112));
-		workTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		workTime.setBounds(296, 428, 100, 14);
-		contentPane.add(workTime);
-		
-		JLabel noOfDays = new JLabel("No. of Days");
-		noOfDays.setForeground(new Color(25, 25, 112));
-		noOfDays.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		noOfDays.setBounds(296, 370, 100, 25);
-		contentPane.add(noOfDays);
-		
-		Integer[] dayList = {1,2,3,4,5};
-		wdNoDaysCB = new JComboBox(dayList);
-		wdNoDaysCB.setModel(new DefaultComboBoxModel(new String[] {"1", "2", "3", "4", "5"}));
-		wdNoDaysCB.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				noDays = (Integer)wdNoDaysCB.getSelectedItem();
-			}
-		});
-		//faculty.setSelectedItem("Business");
-		wdNoDaysCB.setBounds(396, 372, 197, 25);
-		contentPane.add(wdNoDaysCB);
+	
 		
 		
 		
 		JLabel lblCenter = new JLabel("Type");
 		lblCenter.setForeground(new Color(25, 25, 112));
 		lblCenter.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblCenter.setBounds(297, 314, 89, 25);
+		lblCenter.setBounds(270, 243, 57, 27);
 		contentPane.add(lblCenter);
 		
-		String[] centerList = { "Weekday", "Weekend"};
-		JComboBox center = new JComboBox(centerList);
-		center.setModel(new DefaultComboBoxModel(new String[] {"Weekday", "Weekend"}));
-		center.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				wdType = (String)center.getSelectedItem();
-				
-			}
-		});
-		center.setBounds(398, 314, 197, 25);
-		contentPane.add(center);
 		
-		String[] buildingList = {"New building", "D-block" };
+		
+		
+	
 		
 		JButton btnUpdateLec = new JButton("Update");
 		btnUpdateLec.addActionListener(new ActionListener() {
@@ -222,30 +149,36 @@ public class ViewAll extends JFrame {
 				//String sGenerateRank;
 				// name,unChangedEmpId,Faculty,Level,Building,Department,Center
 				
-				wdType = center.getSelectedItem().toString();
-				wdTime = wdWorkTimeF.getText().toString();
-				noDays = Integer.parseInt(wdNoDaysCB.getSelectedItem().toString());
 				empId = Integer.parseInt(SearchwdhIDTextF.getText().toString());
+				
+				wdType = wType;
+				
+				wNoDays = Integer.parseInt(cbweekDays.getSelectedItem().toString());
+				
+				
+				mon = chckbxMonday.isSelected();
+				tue = chckbxTuesday.isSelected();
+				wed = chckbxWednesday.isSelected();
+				thu = chckbxThursday.isSelected();
+				fri = chckbxFriday.isSelected();
+				sat = chckbxSaturday.isSelected();
+				sun = chckbxSunday.isSelected();
+				
+				
 				 
-				if(empId.equals("")) {
+				if(Integer.toString(empId).isEmpty()) {
 						JOptionPane.showMessageDialog(frame,
-							    "Please Search Emp and update !");
+							    "Please Add Relevant ID update !");
 				}
 				else  {
 						 
-						addDataViewAll viewLecConnection = new addDataViewAll();
-						viewLecConnection.updateWDH(wdType,noDays,wdTime);
+						addDataViewAll viewAllConnection = new addDataViewAll();
+						viewAllConnection.updateWDH(empId,wdType,wNoDays,mon,tue,wed,thu,fri,sat,sun);
 						
 						JOptionPane.showMessageDialog(frame,
 							    "Updated !");
 						
-						SearchwdhIDTextF.setText("");
 						
-						wdWorkTimeF.setText("");
-						
-						wdNoDaysCB.setSelectedItem(1);
-						
-						center.setSelectedItem("Weekday");
 						
 					}
 					
@@ -267,7 +200,7 @@ public class ViewAll extends JFrame {
 				
 				if(Integer.toString(empId).isEmpty()) {
 					JOptionPane.showMessageDialog(frame,
-						    "Please Id  !");
+						    "Please Enter Id  !");
 					
 				}
 				else {
@@ -284,11 +217,7 @@ public class ViewAll extends JFrame {
 				            	
 				            	SearchwdhIDTextF.setText("");
 								
-								wdWorkTimeF.setText("");
 								
-								wdNoDaysCB.setSelectedItem(1);
-								
-								center.setSelectedItem("Weekday");
 								
 				            	
 				         }
@@ -321,6 +250,94 @@ public class ViewAll extends JFrame {
 		});
 		btnBack.setBounds(24, 54, 89, 23);
 		contentPane.add(btnBack);
+		
+		Integer[] dayList = {0,1,2,3,4,5};
+		
+		 cbweekDays = new JComboBox(dayList);
+		
+		cbweekDays.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+			        wNoDays = (Integer)cbweekDays.getSelectedItem();
+			        
+			      
+			}
+			
+		});
+		
+		cbweekDays.setBounds(396, 284, 67, 25);
+		contentPane.add(cbweekDays);
+		
+		chckbxMonday = new JCheckBox("Monday");
+		chckbxMonday.setBounds(392, 328, 97, 23);
+		contentPane.add(chckbxMonday);
+		
+		 chckbxTuesday = new JCheckBox("Tuesday");
+		chckbxTuesday.setBounds(392, 354, 97, 23);
+		contentPane.add(chckbxTuesday);
+		
+		 chckbxWednesday = new JCheckBox("Wednesday");
+		chckbxWednesday.setBounds(392, 380, 97, 23);
+		contentPane.add(chckbxWednesday);
+		
+		 chckbxThursday = new JCheckBox("Thursday");
+		chckbxThursday.setBounds(392, 406, 97, 23);
+		contentPane.add(chckbxThursday);
+		
+		chckbxFriday = new JCheckBox("Friday");
+		chckbxFriday.setBounds(392, 432, 97, 23);
+		contentPane.add(chckbxFriday);
+		
+		chckbxSaturday = new JCheckBox("Saturday");
+		chckbxSaturday.setBounds(508, 328, 97, 23);
+		contentPane.add(chckbxSaturday);
+		
+		chckbxSunday = new JCheckBox("Sunday");
+		chckbxSunday.setBounds(508, 354, 97, 23);
+		contentPane.add(chckbxSunday);
+		
+		rdbtnWeekday = new JRadioButton("Weekday");
+		rdbtnWeekday.setBounds(392, 243, 87, 22);
+		contentPane.add(rdbtnWeekday);
+		rdbtnWeekday.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+		
+		if(rdbtnWeekday.isSelected()) {
+			wType = "Weekday";
+		}
+			}
+		});
+		
+		rdbtnWeekend = new JRadioButton("Weekend");
+		rdbtnWeekend.setBounds(508, 243, 109, 23);
+		contentPane.add(rdbtnWeekend);
+		
+		rdbtnWeekend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg1) {
+		
+		if(rdbtnWeekend.isSelected()) {
+			wdType = "Weekend";
+		}
+			}
+		});
+		
+		ButtonGroup bgWorktype = new ButtonGroup();
+		bgWorktype.add(rdbtnWeekday);
+		bgWorktype.add(rdbtnWeekend);
+		
+		lblDays = new JLabel("Days");
+		lblDays.setForeground(new Color(25, 25, 112));
+		lblDays.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblDays.setBounds(270, 324, 57, 27);
+		contentPane.add(lblDays);
+		
+		lblNoDays = new JLabel("No. Days");
+		lblNoDays.setForeground(new Color(25, 25, 112));
+		lblNoDays.setFont(new Font("Tahoma", Font.PLAIN, 15));
+		lblNoDays.setBounds(270, 281, 67, 27);
+		contentPane.add(lblNoDays);
+		
+		
 		
 	}
 }

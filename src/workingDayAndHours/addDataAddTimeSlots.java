@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 
 public class addDataAddTimeSlots {
 	
-	public void insertTimeSlots(String timeSlotType, String startTime, String endTime, String timeSlotDay){
+	public void insertTimeSlots(String timeSlotType, Integer startH, Integer startM, Integer endH, Integer endM, Integer workH, Integer workM){
         
 		db_connection.DB_Connection obj_DB_Connection=new db_connection.DB_Connection();
 		Connection connection=obj_DB_Connection.get_connection();
@@ -13,13 +13,16 @@ public class addDataAddTimeSlots {
 	        
 		try {
 	            
-		    String query="INSERT INTO `timeSlots` (`type`,`startTime`,`EndTime`,`Day`) VALUES (?,?,?,?)";
+		    String query="INSERT INTO `timeSlots` (`slotType`,`startHour`,`startMinute`,`endHour`,`endMinute`,`workHours`,`workMinutes`) VALUES (?,?,?,?,?,?,?)";
 		     ps = 
 		    connection.prepareStatement(query);
 		    ps.setString(1,timeSlotType );
-		    ps.setString(2,startTime );
-		    ps.setString(3,endTime );
-		    ps.setString(4,timeSlotDay);
+		    ps.setInt(2,startH );
+		    ps.setInt(3,startM);
+		    ps.setInt(4,endH);
+		    ps.setInt(5,endM);
+		    ps.setInt(6,workH);
+		    ps.setInt(7,workM);
 		    
 		    
 		    int rowsInserted = ps.executeUpdate();

@@ -26,6 +26,8 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
+import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
 public class AddTimeSlots extends JFrame {
 
@@ -35,9 +37,16 @@ public class AddTimeSlots extends JFrame {
 	private JTable table;
 	private JLabel error1, error2;
 	
+	private JSpinner spinner, spinner_1, spinner_2 , spinner_3;
 	
 	
-	String tType , tStart , tEnd , tDay;
+	
+	String tType;
+	Integer tStartHour, tEndHour, tStartMinute, tEndMinute, tWorkHours, tWorkMinutes; 
+	Integer startHour, endHour , startMinute, endMinute;
+	Integer workHours, workMinutes;
+	private JTextField textField_1;
+	private JTextField textField_2;
 
 	/**
 	 * Launch the application.
@@ -83,91 +92,29 @@ public class AddTimeSlots extends JFrame {
 		slotType.setBounds(564, 88, 197, 25);
 		contentPane.add(slotType);
 		
-		JLabel lblTimeSlot = new JLabel("Time Slot");
+		JLabel lblTimeSlot = new JLabel("Time Slot Type");
 		lblTimeSlot.setForeground(new Color(25, 25, 112));
 		lblTimeSlot.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblTimeSlot.setBounds(434, 91, 94, 14);
+		lblTimeSlot.setBounds(407, 91, 113, 22);
 		contentPane.add(lblTimeSlot);
 		
-		JLabel lblStartTime = new JLabel("Start Time");
+		JLabel lblStartTime = new JLabel("Work Start Time");
 		lblStartTime.setForeground(new Color(25, 25, 112));
 		lblStartTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblStartTime.setBounds(434, 168, 94, 14);
+		lblStartTime.setBounds(407, 168, 121, 14);
 		contentPane.add(lblStartTime);
-		
-		JTextField startTime = new JTextField();
-		startTime.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent ke) {
-				
-				
-				char c = ke.getKeyChar();
-	            
-	            if(Character.isLetter(c))
-	            {
-	            	error1.setText("* Enter only numeric digits");
-	            }
-	            else {
-	            	error1.setText("");
-	            }
-			}
-		});
-		startTime.setBounds(564, 165, 197, 25);
-		contentPane.add(startTime);
-		startTime.setColumns(10);
 		
 		JLabel label = new JLabel("");
 		label.setBounds(482, 260, 46, 14);
 		contentPane.add(label);
 		
-		JLabel lblEndTime = new JLabel("End Time");
+		JLabel lblEndTime = new JLabel("Work End Time");
 		lblEndTime.setForeground(new Color(25, 25, 112));
 		lblEndTime.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblEndTime.setBounds(434, 237, 94, 14);
+		lblEndTime.setBounds(407, 237, 121, 14);
 		contentPane.add(lblEndTime);
 		
-		JTextField endTime = new JTextField();
-		endTime.addKeyListener(new KeyAdapter() {
-			@Override
-			public void keyPressed(KeyEvent ke) {
-				
-				char c = ke.getKeyChar();
-	            
-	            if(Character.isLetter(c))
-	            {
-	            	error2.setText("* Enter only numeric digits");
-	            }
-	            else {
-	            	error2.setText("");
-	            }
-				
-				
-			}
-		});
-		endTime.setBounds(561, 234, 200, 25);
-		contentPane.add(endTime);
-		endTime.setColumns(10);
-		
-		JLabel lblDays = new JLabel("Day");
-		lblDays.setForeground(new Color(25, 25, 112));
-		lblDays.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		lblDays.setBounds(434, 309, 94, 25);
-		contentPane.add(lblDays);
-		
 		String[] daysList = {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"};
-		
-		JComboBox workingDays = new JComboBox(daysList);
-		workingDays.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg1) {
-				
-			        tDay = (String)workingDays.getSelectedItem();
-			      
-			}
-			
-		});
-
-		workingDays.setBounds(564, 313, 197, 25);
-		contentPane.add(workingDays);
 		
 		JLabel lblAddTimeSlots = new JLabel("Add Time Slots");
 		lblAddTimeSlots.setFont(new Font("Tahoma", Font.PLAIN, 25));
@@ -180,13 +127,21 @@ public class AddTimeSlots extends JFrame {
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				tType = slotType.getSelectedItem().toString();
-				tStart =startTime.getText().toString();
-				tEnd = 	endTime.getText().toString();
-				tDay = 	workingDays.getSelectedItem().toString();
+				textField_1.setText(""+workHours);
+				textField_2.setText(""+workMinutes);
 				
-				if(tType.isEmpty()) {
-					JOptionPane.showMessageDialog(null, "Please select type");
+				tType = slotType.getSelectedItem().toString();
+				
+				tStartHour = (Integer)spinner.getValue();
+				tStartMinute = (Integer)spinner_1.getValue();		
+				tEndHour = (Integer)spinner_2.getValue();
+				tEndMinute = (Integer)spinner_3.getValue();
+				tWorkHours = tEndHour - tStartHour;
+				tWorkMinutes = tEndMinute - tStartMinute;
+				
+				
+			/*	if(tType.isEmpty()) {
+				JOptionPane.showMessageDialog(null, "Please select type");
 				}
 				
 				else if(tStart.isEmpty()) {
@@ -211,26 +166,26 @@ public class AddTimeSlots extends JFrame {
 							    "Enter a value between 0hrs and 24hrs");
 				}
 				
-				else {
+				else */ {
 					
 					addDataAddTimeSlots addDataConnection = new addDataAddTimeSlots();
-					addDataConnection.insertTimeSlots(tType,tStart,tEnd,tDay);
+					addDataConnection.insertTimeSlots(tType,tStartHour,tStartMinute,tEndHour,tEndMinute,tWorkHours,tWorkMinutes);
 					
 					JOptionPane.showMessageDialog(null,
 						    "Slot Added !");
 					
-					slotType.setToolTipText("");
-					startTime.setText("");
-					endTime.setText("");
-					workingDays.setToolTipText("");
-					;
+					//slotType.setToolTipText("");
+					//startTime.setText("");
+					//endTime.setText("");
+					//workingDays.setToolTipText("");
+					
 					
 				}
 					
 			}
 		});
 		
-		btnAdd.setBounds(509, 415, 89, 23);
+		btnAdd.setBounds(531, 444, 89, 23);
 		contentPane.add(btnAdd);
 		
 		JButton btnBack = new JButton("BACK");
@@ -262,6 +217,92 @@ public class AddTimeSlots extends JFrame {
 		error2.setBounds(571, 274, 190, 14);
 		contentPane.add(error2);
 		
+		JLabel lblWorkingHours = new JLabel("Working Hours");
+		lblWorkingHours.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblWorkingHours.setBounds(407, 297, 113, 25);
+		contentPane.add(lblWorkingHours);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(564, 299, 197, 25);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		
+		
+		spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(0, 0, 24, 1));
+		spinner.setBounds(574, 167, 61, 20);
+		contentPane.add(spinner);
+		
+		startHour = (Integer)spinner.getValue();
+		
+		 spinner_1 = new JSpinner();
+		spinner_1.setModel(new SpinnerNumberModel(0, 0, 59, 15));
+		spinner_1.setBounds(698, 167, 63, 20);
+		contentPane.add(spinner_1);
+		
+		startMinute = (Integer)spinner_1.getValue();
+		
+		JLabel lblHours = new JLabel("Hours");
+		lblHours.setBounds(574, 153, 46, 14);
+		contentPane.add(lblHours);
+		
+		
+		
+		JLabel lblMinutes = new JLabel("Minutes");
+		lblMinutes.setBounds(698, 153, 46, 14);
+		contentPane.add(lblMinutes);
+		
+		 spinner_2 = new JSpinner();
+		spinner_2.setModel(new SpinnerNumberModel(0, 0, 24, 1));
+		spinner_2.setBounds(574, 236, 61, 20);
+		contentPane.add(spinner_2);
+		
+		endHour = (Integer)spinner_2.getValue();
+		
+		 spinner_3 = new JSpinner();
+		spinner_3.setModel(new SpinnerNumberModel(0, 0, 59, 15));
+		spinner_3.setBounds(698, 236, 63, 20);
+		contentPane.add(spinner_3);
+		
+		endMinute = (Integer)spinner_3.getValue();
+		
+		//System.out.println(endMinute);
+		
+	
+		
+		JLabel lblHours_1 = new JLabel("Hours");
+		lblHours_1.setBounds(574, 222, 46, 14);
+		contentPane.add(lblHours_1);
+		
+		JLabel lblMinutes_1 = new JLabel("Minutes");
+		lblMinutes_1.setBounds(698, 222, 46, 14);
+		contentPane.add(lblMinutes_1);
+		
+		JLabel lblWorkingMinutes = new JLabel("Working Minutes");
+		lblWorkingMinutes.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblWorkingMinutes.setBounds(407, 354, 140, 25);
+		contentPane.add(lblWorkingMinutes);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(564, 354, 197, 24);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		/*JButton btnCalculate = new JButton("Calculate");
+		btnCalculate.setBounds(807, 201, 89, 23);
+		contentPane.add(btnCalculate);
+		btnCalculate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e2) {
+				
+				textField_1.setText("" +workHours);
+				
+				textField_2.setText("" +workMinutes);
+			}
+		});*/
+		
+		workHours = (Integer)spinner.getValue() - (Integer)spinner_2.getValue();
+		workMinutes = (Integer)spinner_1.getValue() - (Integer)spinner_3.getValue();
 		
 	}
 }
