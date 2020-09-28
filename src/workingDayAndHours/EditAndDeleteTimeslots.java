@@ -39,7 +39,7 @@ public class EditAndDeleteTimeslots extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 	private JTextField SearchEmpTextF;
-	private JRadioButton rdbtnWeekday, rdbtnWeekend;
+	private JRadioButton rdbtThirty, rdbtnOneHour;
 		
 	
 	
@@ -48,6 +48,8 @@ public class EditAndDeleteTimeslots extends JFrame {
 	Boolean mon,tue,wed,thu,fri,sat,sun;
 	Integer wNoDays;
 	Integer startHour,startMinute,endHour,endMinute,workHours,workMinutes;
+	
+	Integer calcHours,calcMins, calcStartH, calcStartMin , calcEndH , calcEndMin;
 	
 	JFrame frame = new JFrame("Swing Tester");
 	JComboBox wdTypeCB;
@@ -245,7 +247,7 @@ public class EditAndDeleteTimeslots extends JFrame {
 		contentPane.add(btnDeleteLec);
 		
 		
-		JLabel lblViewLecturers = new JLabel("View All");
+		JLabel lblViewLecturers = new JLabel("View Slots");
 		lblViewLecturers.setForeground(new Color(0, 51, 51));
 		lblViewLecturers.setFont(new Font("Tahoma", Font.PLAIN, 25));
 		lblViewLecturers.setBounds(535, 0, 100, 45);
@@ -265,34 +267,34 @@ public class EditAndDeleteTimeslots extends JFrame {
 		
 		Integer[] dayList = {0,1,2,3,4,5};
 		
-		rdbtnWeekday = new JRadioButton("Weekday");
-		rdbtnWeekday.setBounds(406, 243, 87, 22);
-		contentPane.add(rdbtnWeekday);
-		rdbtnWeekday.addActionListener(new ActionListener() {
+		rdbtThirty = new JRadioButton("30 Minute");
+		rdbtThirty.setBounds(406, 243, 87, 22);
+		contentPane.add(rdbtThirty);
+		rdbtThirty.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 		
-		if(rdbtnWeekday.isSelected()) {
-			wType = "Weekday";
+		if(rdbtThirty.isSelected()) {
+			wType = "30 Minute";
 		}
 			}
 		});
 		
-		rdbtnWeekend = new JRadioButton("Weekend");
-		rdbtnWeekend.setBounds(508, 243, 109, 23);
-		contentPane.add(rdbtnWeekend);
+		rdbtnOneHour = new JRadioButton("One Hour");
+		rdbtnOneHour.setBounds(508, 243, 109, 23);
+		contentPane.add(rdbtnOneHour);
 		
-		rdbtnWeekend.addActionListener(new ActionListener() {
+		rdbtnOneHour.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg1) {
 		
-		if(rdbtnWeekend.isSelected()) {
-			wdType = "Weekend";
+		if(rdbtnOneHour.isSelected()) {
+			wdType = "One Hour";
 		}
 			}
 		});
 		
 		ButtonGroup bgWorktype = new ButtonGroup();
-		bgWorktype.add(rdbtnWeekday);
-		bgWorktype.add(rdbtnWeekend);
+		bgWorktype.add(rdbtThirty);
+		bgWorktype.add(rdbtnOneHour);
 		
 		lblNoDays = new JLabel("Work End Time");
 		lblNoDays.setForeground(new Color(25, 25, 112));
@@ -305,10 +307,14 @@ public class EditAndDeleteTimeslots extends JFrame {
 		spinner.setBounds(410, 286, 46, 22);
 		contentPane.add(spinner);
 		
+		calcStartH = (Integer) spinner.getValue();
+		
 		spinner_1 = new JSpinner();
 		spinner_1.setModel(new SpinnerNumberModel(0, 0, 59, 15));
 		spinner_1.setBounds(508, 286, 46, 22);
 		contentPane.add(spinner_1);
+		
+		calcStartMin = (Integer) spinner_1.getValue();
 		
 		label = new JLabel("Work Start Time");
 		label.setForeground(new Color(25, 25, 112));
@@ -321,10 +327,14 @@ public class EditAndDeleteTimeslots extends JFrame {
 		spinner_2.setBounds(410, 343, 46, 25);
 		contentPane.add(spinner_2);
 		
+		calcEndH = (Integer) spinner_2.getValue();
+		
 		spinner_3 = new JSpinner();
 		spinner_3.setModel(new SpinnerNumberModel(0, 0, 59, 15));
 		spinner_3.setBounds(508, 343, 46, 25);
 		contentPane.add(spinner_3);
+		
+		calcEndMin = (Integer) spinner_3.getValue();
 		
 		lblHours = new JLabel("Hours");
 		lblHours.setBounds(410, 272, 46, 14);
@@ -365,6 +375,14 @@ public class EditAndDeleteTimeslots extends JFrame {
 		textField_1.setColumns(10);
 		
 		btnCalculat = new JButton("Calculate");
+		btnCalculat.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				
+				
+			}
+		});
+		
 		btnCalculat.setBounds(651, 303, 89, 23);
 		contentPane.add(btnCalculat);
 		
