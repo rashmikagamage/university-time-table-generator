@@ -32,8 +32,9 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JCheckBox;
 import javax.swing.JRadioButton;
 import javax.swing.JSpinner;
+import javax.swing.SpinnerNumberModel;
 
-public class EditAndDelete extends JFrame {
+public class EditAndDeleteTimeslots extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
@@ -42,10 +43,11 @@ public class EditAndDelete extends JFrame {
 		
 	
 	
-	String wdType,wdTime;
+	String wdType;
 	String wType;
 	Boolean mon,tue,wed,thu,fri,sat,sun;
 	Integer wNoDays;
+	Integer startHour,startMinute,endHour,endMinute,workHours,workMinutes;
 	
 	JFrame frame = new JFrame("Swing Tester");
 	JComboBox wdTypeCB;
@@ -65,6 +67,7 @@ public class EditAndDelete extends JFrame {
 	private JLabel lblWorkMinutes;
 	private JTextField textField;
 	private JTextField textField_1;
+	private JButton btnCalculat;
 
 	/**
 	 * Launch the application.
@@ -88,7 +91,7 @@ public class EditAndDelete extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public EditAndDelete() {
+	public EditAndDeleteTimeslots() {
 
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 575);
@@ -114,7 +117,7 @@ public class EditAndDelete extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				ResultSet rs = null;
-				addDataViewAll viewWDH = new addDataViewAll();
+				addDataEditAndDeleteTimeSlots viewWDH = new addDataEditAndDeleteTimeSlots();
 				rs = viewWDH.viewSaved();
 				table.setModel(DbUtils.resultSetToTableModel(rs));
 				
@@ -164,12 +167,12 @@ public class EditAndDelete extends JFrame {
 				
 				wdType = wType;
 				
-				startHour =
-				startMinute=
-				EndHour= 
-				EndMinute=
-				workHours= 
-				WorkMinutes=
+				startHour = (Integer)spinner.getValue();
+				startMinute= (Integer)spinner_1.getValue();
+				endHour= (Integer)spinner_2.getValue();
+				endMinute=(Integer)spinner_3.getValue();
+				workHours= endHour - startHour;
+				workMinutes= endMinute - startMinute;
 				
 				
 				
@@ -180,8 +183,9 @@ public class EditAndDelete extends JFrame {
 				}
 				else  {
 						 
-						addDataViewAll viewAllConnection = new addDataViewAll();
-						viewAllConnection.updateWDH(wdType,wNoDays,mon,tue,wed,thu,fri,sat,sun);
+						addDataEditAndDeleteTimeSlots viewAllConnection = new addDataEditAndDeleteTimeSlots();
+						
+						viewAllConnection.updateTimeslot(wdType,startHour,startMinute,endHour,endMinute,workHours,workMinutes,empId);
 						
 						JOptionPane.showMessageDialog(frame,
 							    "Updated !");
@@ -213,7 +217,7 @@ public class EditAndDelete extends JFrame {
 				}
 				else {
 					
-					addDataViewAll viewLecConnection = new addDataViewAll();
+					addDataEditAndDeleteTimeSlots viewLecConnection = new addDataEditAndDeleteTimeSlots();
 					
 					 int result = JOptionPane.showConfirmDialog(frame,"Sure? You want to Delete?", "Swing Tester",
 				               JOptionPane.YES_NO_OPTION,
@@ -262,7 +266,7 @@ public class EditAndDelete extends JFrame {
 		Integer[] dayList = {0,1,2,3,4,5};
 		
 		rdbtnWeekday = new JRadioButton("Weekday");
-		rdbtnWeekday.setBounds(392, 243, 87, 22);
+		rdbtnWeekday.setBounds(406, 243, 87, 22);
 		contentPane.add(rdbtnWeekday);
 		rdbtnWeekday.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -297,10 +301,12 @@ public class EditAndDelete extends JFrame {
 		contentPane.add(lblNoDays);
 		
 		spinner = new JSpinner();
+		spinner.setModel(new SpinnerNumberModel(0, 0, 24, 1));
 		spinner.setBounds(410, 286, 46, 22);
 		contentPane.add(spinner);
 		
 		spinner_1 = new JSpinner();
+		spinner_1.setModel(new SpinnerNumberModel(0, 0, 59, 15));
 		spinner_1.setBounds(508, 286, 46, 22);
 		contentPane.add(spinner_1);
 		
@@ -311,10 +317,12 @@ public class EditAndDelete extends JFrame {
 		contentPane.add(label);
 		
 		spinner_2 = new JSpinner();
+		spinner_2.setModel(new SpinnerNumberModel(0, 0, 24, 1));
 		spinner_2.setBounds(410, 343, 46, 25);
 		contentPane.add(spinner_2);
 		
 		spinner_3 = new JSpinner();
+		spinner_3.setModel(new SpinnerNumberModel(0, 0, 59, 15));
 		spinner_3.setBounds(508, 343, 46, 25);
 		contentPane.add(spinner_3);
 		
@@ -355,6 +363,10 @@ public class EditAndDelete extends JFrame {
 		textField_1.setBounds(396, 435, 199, 27);
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
+		
+		btnCalculat = new JButton("Calculate");
+		btnCalculat.setBounds(651, 303, 89, 23);
+		contentPane.add(btnCalculat);
 		
 		
 		

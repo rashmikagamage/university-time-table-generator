@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-public class addDataEditAndDelete {
+public class addDataEditAndDeleteTimeSlots {
 	
 	db_connection.DB_Connection obj_DB_Connection=new db_connection.DB_Connection();
 	Connection connection=obj_DB_Connection.get_connection();
@@ -43,17 +43,23 @@ public class addDataEditAndDelete {
 	}
 	
 
-	public void updateWDH(String sType,Integer sHour,Integer sMin, Integer eHour, Integer eMin , Integer wHours, Integer wMins) {
+	public void updateTimeslot(String sType,Integer sHour,Integer sMin, Integer eHour, Integer eMin , Integer wHours, Integer wMins, Integer id) {
 		
 		try {
 			
 			
-				String query = "UPDATE `workingDaysHours` SET `wdhType` = ? , `wdhNoDays` = ? , `wdhWorkingTime` = ?";
+				String query = "UPDATE `timeSlots` SET `slotType` = ? , `startHour` = ? , `startMinute` = ? , `endHour` = ? , `endMinute` = ? , `workHours` = ? , `workMinutes` = ? where `idTs` = ? ";
 										
 				ps = connection.prepareStatement(query);
-			    ps.setString(1,wdhType );
-			    ps.setInt(2,wdhNoDays );
-			    ps.setString(3, wdhWorkTime);
+			    ps.setString(1,sType );
+			    ps.setInt(2,sHour);
+			    ps.setInt(3,sMin);
+			    ps.setInt(4,eHour);
+			    ps.setInt(5,eMin);
+			    ps.setInt(6,wHours);
+			    ps.setInt(7,wMins);
+			    ps.setInt(8,id);
+			    
 			    
 			    ps.executeUpdate();
 			    
@@ -67,7 +73,7 @@ public class addDataEditAndDelete {
 	
 	public void deleteWDH(Integer wdhId) {
 		
-		String query = "DELETE FROM `workingDaysHours` WHERE `idworkingDaysHours`=?";
+		String query = "DELETE FROM `timeSlots` WHERE `idTs`=?";
 			 try {
 				ps = connection.prepareStatement(query);
 				ps.setInt(1,wdhId);
