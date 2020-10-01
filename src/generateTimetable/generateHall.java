@@ -1,11 +1,13 @@
 package generateTimetable;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
 
 public class generateHall extends JFrame {
 
@@ -31,12 +33,17 @@ public class generateHall extends JFrame {
 	 * Create the frame.
 	 */
 	public generateHall() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 1000, 575);
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(153, 51, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JButton btnPrint = new JButton("Print");
+		btnPrint.setBounds(850, 485, 89, 23);
+		contentPane.add(btnPrint);
 	}
-
 }

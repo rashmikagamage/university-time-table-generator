@@ -1,15 +1,20 @@
 package generateTimetable;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 
 public class generateStudent extends JFrame {
 
 	private JPanel contentPane;
+	private JTextField textField;
 
 	/**
 	 * Launch the application.
@@ -31,12 +36,31 @@ public class generateStudent extends JFrame {
 	 * Create the frame.
 	 */
 	public generateStudent() {
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 450, 300);
+		setResizable(false);
+		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		setBounds(100, 100, 1000, 575);
 		contentPane = new JPanel();
+		contentPane.setForeground(new Color(153, 51, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
-	}
+		contentPane.setLayout(null);
+		
+		JButton btnPrint = new JButton("Print");
+		btnPrint.setBounds(866, 493, 89, 23);
+		contentPane.add(btnPrint);
+		
+		JLabel lblStudentId = new JLabel("Student ID");
+		lblStudentId.setBounds(306, 32, 64, 14);
+		contentPane.add(lblStudentId);
+		
+		textField = new JTextField();
+		textField.setBounds(389, 29, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		JButton btnGenerate = new JButton("Generate");
+		btnGenerate.setBounds(511, 28, 89, 23);
+		contentPane.add(btnGenerate);
 
+}
 }

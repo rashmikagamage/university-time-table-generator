@@ -250,7 +250,7 @@ public class EditAndDeleteTimeslots extends JFrame {
 		JLabel lblViewLecturers = new JLabel("View Slots");
 		lblViewLecturers.setForeground(new Color(0, 51, 51));
 		lblViewLecturers.setFont(new Font("Tahoma", Font.PLAIN, 25));
-		lblViewLecturers.setBounds(535, 0, 100, 45);
+		lblViewLecturers.setBounds(478, 0, 217, 45);
 		contentPane.add(lblViewLecturers);
 		ImageIcon img = new ImageIcon(this.getClass().getResource(""));
 		
@@ -276,6 +276,9 @@ public class EditAndDeleteTimeslots extends JFrame {
 		if(rdbtThirty.isSelected()) {
 			wType = "30 Minute";
 		}
+		else {
+			wdType = "1 Hour";
+		}
 			}
 		});
 		
@@ -288,6 +291,10 @@ public class EditAndDeleteTimeslots extends JFrame {
 		
 		if(rdbtnOneHour.isSelected()) {
 			wdType = "One Hour";
+		}
+		else {
+			
+			wdType = "30 Minute";
 		}
 			}
 		});
@@ -303,14 +310,14 @@ public class EditAndDeleteTimeslots extends JFrame {
 		contentPane.add(lblNoDays);
 		
 		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(0, 0, 24, 1));
+		spinner.setModel(new SpinnerNumberModel(8, 8, 21, 1));
 		spinner.setBounds(410, 286, 46, 22);
 		contentPane.add(spinner);
 		
 		calcStartH = (Integer) spinner.getValue();
 		
 		spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(0, 0, 59, 15));
+		spinner_1.setModel(new SpinnerNumberModel(0, 0, 30, 30));
 		spinner_1.setBounds(508, 286, 46, 22);
 		contentPane.add(spinner_1);
 		
@@ -323,14 +330,14 @@ public class EditAndDeleteTimeslots extends JFrame {
 		contentPane.add(label);
 		
 		spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(0, 0, 24, 1));
+		spinner_2.setModel(new SpinnerNumberModel(8, 8, 21, 1));
 		spinner_2.setBounds(410, 343, 46, 25);
 		contentPane.add(spinner_2);
 		
 		calcEndH = (Integer) spinner_2.getValue();
 		
 		spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(0, 0, 59, 15));
+		spinner_3.setModel(new SpinnerNumberModel(0, 0, 30, 30));
 		spinner_3.setBounds(508, 343, 46, 25);
 		contentPane.add(spinner_3);
 		

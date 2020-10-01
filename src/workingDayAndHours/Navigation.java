@@ -103,6 +103,19 @@ public class Navigation extends JFrame {
 		contentPane.add(btnViewAndEdit_1);
 		
 		JButton btnViewAndEdit = new JButton("View and Edit Timeslots");
+		
+		btnViewAndEdit.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e2) {
+				
+				EditAndDeleteTimeslots viewAll = new EditAndDeleteTimeslots();
+				viewAll.setVisible(true);
+				
+			}
+			
+		});
+		
+		
 		btnViewAndEdit.setForeground(Color.WHITE);
 		btnViewAndEdit.setBackground(new Color(102, 51, 255));
 		btnViewAndEdit.setBounds(562, 293, 169, 89);

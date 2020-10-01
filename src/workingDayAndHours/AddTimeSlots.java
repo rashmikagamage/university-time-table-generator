@@ -230,14 +230,14 @@ public class AddTimeSlots extends JFrame {
 		
 		
 		spinner = new JSpinner();
-		spinner.setModel(new SpinnerNumberModel(0, 0, 24, 1));
+		spinner.setModel(new SpinnerNumberModel(8, 8, 21, 1));
 		spinner.setBounds(574, 167, 61, 20);
 		contentPane.add(spinner);
 		
 		startHour = (Integer)spinner.getValue();
 		
 		 spinner_1 = new JSpinner();
-		spinner_1.setModel(new SpinnerNumberModel(0, 0, 59, 15));
+		spinner_1.setModel(new SpinnerNumberModel(0, 0, 30, 30));
 		spinner_1.setBounds(698, 167, 63, 20);
 		contentPane.add(spinner_1);
 		
@@ -254,14 +254,14 @@ public class AddTimeSlots extends JFrame {
 		contentPane.add(lblMinutes);
 		
 		 spinner_2 = new JSpinner();
-		spinner_2.setModel(new SpinnerNumberModel(0, 0, 24, 1));
+		spinner_2.setModel(new SpinnerNumberModel(8, 8, 21, 1));
 		spinner_2.setBounds(574, 236, 61, 20);
 		contentPane.add(spinner_2);
 		
 		endHour = (Integer)spinner_2.getValue();
 		
 		 spinner_3 = new JSpinner();
-		spinner_3.setModel(new SpinnerNumberModel(0, 0, 59, 15));
+		spinner_3.setModel(new SpinnerNumberModel(0, 0, 30, 30));
 		spinner_3.setBounds(698, 236, 63, 20);
 		contentPane.add(spinner_3);
 		
