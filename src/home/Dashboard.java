@@ -20,6 +20,8 @@ import lecturer.LecturerSubjectHome;
 import parallelSession.ParallelSes;
 import session.SessionsHome;
 import student.StudentHome;
+import workingDayAndHours.Navigation;
+import generateTimetable.generateNav;
 
 public class Dashboard extends JFrame {
 
@@ -81,12 +83,12 @@ public class Dashboard extends JFrame {
 		contentPane.add(btnStudentsManagement);
 		
 
-		JLabel image = new JLabel("");
+		/*JLabel image = new JLabel("");
 		image.setBackground(new Color(25, 25, 112));
 		ImageIcon img = new ImageIcon(this.getClass().getResource("/dashboard.png"));
 		image.setIcon(img);
 		image.setBounds(362, 101, 384, 358);
-		contentPane.add(image);
+		contentPane.add(image);*/
 		
 		JButton btnTagsManagement = new JButton("Tags Management");
 		btnTagsManagement.addActionListener(new ActionListener() {
@@ -145,11 +147,11 @@ public class Dashboard extends JFrame {
 		btnSessionManagement_1.setBounds(703, 301, 211, 53);
 		contentPane.add(btnSessionManagement_1);
 		
-		JLabel image2 = new JLabel("");
+		/*JLabel image2 = new JLabel("");
 		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
 		image2.setIcon(img2);
 		image2.setBounds(0, 439, 1037, 119);
-		contentPane.add(image2);
+		contentPane.add(image2);*/
 		
 		JButton btnSessionManagement = new JButton("Parallel Session Management");
 		btnSessionManagement.addActionListener(new ActionListener() {
@@ -163,6 +165,37 @@ public class Dashboard extends JFrame {
 		btnSessionManagement.setBackground(new Color(25, 25, 112));
 		btnSessionManagement.setBounds(85, 397, 211, 53);
 		contentPane.add(btnSessionManagement);
+		
+		JButton btnWorkingDaysAnd = new JButton("Working Days and Time Slots");
+		btnWorkingDaysAnd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				Navigation wgNav = new Navigation();
+				wgNav.setVisible(true);
+				
+			}
+		});
+		btnWorkingDaysAnd.setForeground(Color.WHITE);
+		btnWorkingDaysAnd.setBackground(new Color(25, 25, 112));
+		btnWorkingDaysAnd.setBounds(703, 385, 211, 53);
+		contentPane.add(btnWorkingDaysAnd);
+		
+		JButton btnGenerateTimetable = new JButton("Generate Timetable");
+		
+		btnGenerateTimetable.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				generateNav gNav = new generateNav();
+				gNav.setVisible(true);
+				
+				
+			}
+		});
+		
+		btnGenerateTimetable.setForeground(Color.WHITE);
+		btnGenerateTimetable.setBackground(new Color(25, 25, 112));
+		btnGenerateTimetable.setBounds(85, 25, 211, 53);
+		contentPane.add(btnGenerateTimetable);
 		
 	}
 }
