@@ -58,6 +58,7 @@ public class generateNav extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				generateLecturer addWDH = new generateLecturer();
+				dispose();
 				addWDH.setVisible(true);
 			}
 		});
@@ -73,6 +74,7 @@ public class generateNav extends JFrame {
 			public void actionPerformed(ActionEvent e1) {
 				
 				generateStudent addTS = new generateStudent();
+				dispose();
 				addTS.setVisible(true);
 				
 			}
@@ -89,6 +91,7 @@ public class generateNav extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				generateHall addTS = new generateHall();
+				dispose();
 				addTS.setVisible(true);
 				
 			}

@@ -58,6 +58,7 @@ public class Navigation extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				
 				AddWorkingDaysAndHours addWDH = new AddWorkingDaysAndHours();
+				dispose();
 				addWDH.setVisible(true);
 			}
 		});
@@ -73,6 +74,7 @@ public class Navigation extends JFrame {
 			public void actionPerformed(ActionEvent e1) {
 				
 				AddTimeSlots addTS = new AddTimeSlots();
+				dispose();
 				addTS.setVisible(true);
 				
 			}
@@ -91,6 +93,7 @@ public class Navigation extends JFrame {
 		public void actionPerformed(ActionEvent e2) {
 			
 			ViewAll viewAll = new ViewAll();
+			dispose();
 			viewAll.setVisible(true);
 			
 		}
@@ -109,6 +112,7 @@ public class Navigation extends JFrame {
 			public void actionPerformed(ActionEvent e2) {
 				
 				EditAndDeleteTimeslots viewAll = new EditAndDeleteTimeslots();
+				dispose();
 				viewAll.setVisible(true);
 				
 			}

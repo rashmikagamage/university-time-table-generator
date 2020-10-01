@@ -162,6 +162,7 @@ public class AddWorkingDaysAndHours extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				Navigation s = new Navigation();
+				dispose();
 				s.setVisible(true);
 				
 			}

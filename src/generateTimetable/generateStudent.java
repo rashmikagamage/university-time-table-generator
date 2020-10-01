@@ -3,10 +3,15 @@ package generateTimetable;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import workingDayAndHours.Navigation;
+
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -61,6 +66,21 @@ public class generateStudent extends JFrame {
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.setBounds(511, 28, 89, 23);
 		contentPane.add(btnGenerate);
+		
+		JButton btnBack = new JButton("Back");
+		
+		btnBack.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				
+				generateNav s = new generateNav();
+				dispose();
+				s.setVisible(true);
+				
+			}
+		});
+		
+		btnBack.setBounds(25, 28, 89, 23);
+		contentPane.add(btnBack);
 
 }
 }
