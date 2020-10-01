@@ -126,12 +126,12 @@ public class ViewStatistics extends JFrame {
 		
 		JSeparator separator_1 = new JSeparator();
 		separator_1.setOrientation(SwingConstants.VERTICAL);
-		separator_1.setBounds(330, 100, 2, 415);
+		separator_1.setBounds(330, 100, 2, 427);
 		contentPane.add(separator_1);
 		
 		JSeparator separator_2 = new JSeparator();
 		separator_2.setOrientation(SwingConstants.VERTICAL);
-		separator_2.setBounds(664, 100, 2, 415);
+		separator_2.setBounds(664, 100, 2, 427);
 		contentPane.add(separator_2);
 		lblStudent.setForeground(new Color(30, 144, 255));
 		lblStudent.setFont(new Font("Tahoma", Font.PLAIN, 24));
@@ -244,12 +244,6 @@ public class ViewStatistics extends JFrame {
 		JSeparator separator_8 = new JSeparator();
 		separator_8.setBounds(709, 438, 227, 2);
 		contentPane.add(separator_8);
-		
-		JLabel image2 = new JLabel("");
-		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
-		image2.setIcon(img2);
-		image2.setBounds(0, 482, 1037, 90);
-		contentPane.add(image2);
 		
         
 	}

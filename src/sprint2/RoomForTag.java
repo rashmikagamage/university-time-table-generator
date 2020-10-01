@@ -5,40 +5,24 @@ import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
 
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 import javax.swing.border.EmptyBorder;
 
 import location.AddLocation;
-import location.ViewLocationConnection;
-import location.locationConnection;
-import net.proteanit.sql.DbUtils;
 
 import javax.swing.JSeparator;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 
 public class RoomForTag extends JFrame {
 
 	private JPanel contentPane;
-	ArrayList<String> tags = new ArrayList<String>();
-	ArrayList<String> rooms = new ArrayList<String>();
-	JComboBox comboBox = new JComboBox();
-	JComboBox comboBox_1 = new JComboBox();
-	int i,j = 0;
-	String sRoom, sTag;
 
 	/**
 	 * Launch the application.
@@ -60,42 +44,6 @@ public class RoomForTag extends JFrame {
 	 * Create the frame.
 	 */
 	public RoomForTag() {
-		addComponentListener(new ComponentAdapter() {
-			@Override
-			public void componentShown(ComponentEvent e) {
-				ResultSet rs= null;
-				ResultSet rsRooms = null;
-				
-				TagRoomConnection tagConnection = new TagRoomConnection();
-				rs = tagConnection.tagsRetrieve();
-				rsRooms = tagConnection.roomRetreieve();
-				
-				
-
-				try {
-					while( rs.next( ) ) { 
-					     tags.add(rs.getString( "Tag"));
-					     comboBox.addItem(tags.get(i));
-					     i++;
-					  }
-				} catch (NumberFormatException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				try {
-					while( rsRooms.next( ) ) { 
-					     rooms.add(rsRooms.getString( "room"));
-					     comboBox_1.addItem(rooms.get(j));
-					     j++;
-					  }
-				} catch (NumberFormatException | SQLException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
-				
-				
-			}
-		});
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 575);
@@ -132,69 +80,24 @@ public class RoomForTag extends JFrame {
 		label_3.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		label_3.setBounds(537, 211, 61, 25);
 		contentPane.add(label_3);
-		comboBox.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				sTag = (String)comboBox.getSelectedItem();
-			}
-		});
 		
-		
+		JComboBox comboBox = new JComboBox(new Object[]{});
 		comboBox.setBounds(658, 132, 197, 25);
 		contentPane.add(comboBox);
-		comboBox_1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				sRoom = (String)comboBox_1.getSelectedItem();
-			}
-		});
 		
+		JComboBox comboBox_1 = new JComboBox(new Object[]{});
 		comboBox_1.setBounds(658, 212, 197, 25);
 		contentPane.add(comboBox_1);
 		
 		JButton button = new JButton("Submit");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				if(sTag.isEmpty()) {
-					JOptionPane.showMessageDialog(null,
-						    "Please select a Tag");
-				}else if(sRoom.isEmpty()){
-					JOptionPane.showMessageDialog(null,
-						    "Please select a Room");
-				}else {
-					TagRoomConnection tagConnection = new TagRoomConnection();
-					tagConnection.insertTagRoom(sTag, sRoom);
-					
-					JOptionPane.showMessageDialog(null,
-						    "Room Added for Tag Successfully !");	
-				}}
+			}
 		});
 		button.setOpaque(true);
-		button.setForeground(Color.WHITE);
+		button.setForeground(Color.BLUE);
 		button.setBackground(new Color(65, 105, 225));
 		button.setBounds(714, 277, 90, 40);
 		contentPane.add(button);
-		
-		JButton bckBtn = new JButton("BACK");
-		bckBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				dispose();
-				RoomManagementHome home = new RoomManagementHome();
-				home.setVisible(true);
-				
-				}
-		});
-		bckBtn.setOpaque(true);
-		bckBtn.setForeground(Color.WHITE);
-		bckBtn.setBackground(new Color(65, 105, 225));
-		bckBtn.setBounds(890, 25, 90, 35);
-		contentPane.add(bckBtn);
-		
-		JLabel image2 = new JLabel("");
-		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
-		image2.setIcon(img2);
-		image2.setBounds(0, 454, 1037, 119);
-		contentPane.add(image2);
 	}
 }
-
