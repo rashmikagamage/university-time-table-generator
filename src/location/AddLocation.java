@@ -7,6 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import sprint2.RoomManagementHome;
 import student.addDataConnection;
 
 import javax.swing.JLabel;
@@ -155,7 +156,7 @@ public class AddLocation extends JFrame {
 				}}
 			});
 		
-		button.setForeground(Color.BLUE);
+		button.setForeground(Color.WHITE);
 		button.setOpaque(true);
 		button.setBackground(new Color(65, 105, 225));
 		button.setBounds(560, 377, 90, 40);
@@ -170,5 +171,27 @@ public class AddLocation extends JFrame {
 		JSeparator separator = new JSeparator();
 		separator.setBounds(12, 70, 970, 2);
 		contentPane.add(separator);
+		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 469, 1037, 90);
+		contentPane.add(image2);
+		
+		JButton bckBtn = new JButton("BACK");
+		bckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				LocationHome home = new LocationHome();
+				home.setVisible(true);
+				
+				}
+		});
+		bckBtn.setOpaque(true);
+		bckBtn.setForeground(Color.WHITE);
+		bckBtn.setBackground(new Color(65, 105, 225));
+		bckBtn.setBounds(890, 25, 90, 35);
+		contentPane.add(bckBtn);
 	}
 }

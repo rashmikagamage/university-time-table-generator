@@ -17,8 +17,14 @@ import javax.swing.border.EmptyBorder;
 import ConsecutiveSession.ConsecutiveSession;
 import Tags.Tags;
 import lecturer.LecturerSubjectHome;
+import location.LocationHome;
 import parallelSession.ParallelSes;
+<<<<<<< HEAD
 import session.SessionsHome;
+=======
+import sprint2.RoomManagementHome;
+import statistics.ViewStatistics;
+>>>>>>> refs/remotes/origin/pramodhSprint2
 import student.StudentHome;
 
 public class Dashboard extends JFrame {
@@ -113,6 +119,13 @@ public class Dashboard extends JFrame {
 		contentPane.add(btnLecturerManagement);
 		
 		JButton btnStatisticsManagement = new JButton("View Statistics ");
+		btnStatisticsManagement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ViewStatistics viewStats = new ViewStatistics();
+				viewStats.setVisible(true);
+				
+			}
+		});
 		btnStatisticsManagement.setForeground(Color.WHITE);
 		btnStatisticsManagement.setBackground(new Color(25, 25, 112));
 		btnStatisticsManagement.setBounds(703, 101, 211, 53);
@@ -129,9 +142,9 @@ public class Dashboard extends JFrame {
 		});
 		button_4.setForeground(Color.WHITE);
 		button_4.setBackground(new Color(25, 25, 112));
-		button_4.setBounds(703, 205, 211, 53);
+		button_4.setBounds(703, 206, 211, 53);
 		contentPane.add(button_4);
-		
+
 		JButton btnSessionManagement_1 = new JButton("Session Management");
 		btnSessionManagement_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -144,6 +157,18 @@ public class Dashboard extends JFrame {
 		btnSessionManagement_1.setBackground(new Color(25, 25, 112));
 		btnSessionManagement_1.setBounds(703, 301, 211, 53);
 		contentPane.add(btnSessionManagement_1);
+		JButton button_5 = new JButton("Location Management");
+		button_5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				LocationHome locHome = new LocationHome();
+				locHome.setVisible(true);
+				
+			}
+		});
+		button_5.setForeground(Color.WHITE);
+		button_5.setBackground(new Color(25, 25, 112));
+		button_5.setBounds(703, 301, 211, 53);
+		contentPane.add(button_5);
 		
 		JLabel image2 = new JLabel("");
 		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
@@ -161,8 +186,22 @@ public class Dashboard extends JFrame {
 		});
 		btnSessionManagement.setForeground(Color.WHITE);
 		btnSessionManagement.setBackground(new Color(25, 25, 112));
-		btnSessionManagement.setBounds(85, 397, 211, 53);
+		btnSessionManagement.setBounds(85, 395, 211, 53);
 		contentPane.add(btnSessionManagement);
+		
+		JButton roomManagement = new JButton("Room Management");
+		roomManagement.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				RoomManagementHome rmHome = new RoomManagementHome();
+				rmHome.setVisible(true);
+				
+			}
+		});
+		roomManagement.setForeground(Color.WHITE);
+		roomManagement.setBackground(new Color(25, 25, 112));
+		roomManagement.setBounds(703, 395, 211, 53);
+		contentPane.add(roomManagement);
 		
 	}
 }
