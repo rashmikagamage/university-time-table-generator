@@ -54,7 +54,7 @@ public class TagsDataConnection {
 		db_connection.DB_Connection obj_DB_Connection=new db_connection.DB_Connection();
 		Connection connection=obj_DB_Connection.get_connection();
 		PreparedStatement ps=null;
-		
+		//prepared
 		try { 
 		    String query="DELETE FROM `Tags` WHERE `Tag` = ?";
 		    ps = connection.prepareStatement(query);
