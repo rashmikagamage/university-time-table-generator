@@ -25,6 +25,7 @@ public class TagsDataConnection {
 		    System.out.println(e);
 		}	
 	}
+	//string
 	
 	public ArrayList<String> getTags() {
 	
