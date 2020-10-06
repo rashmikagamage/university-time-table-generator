@@ -20,6 +20,11 @@ import location.AddLocation;
 import location.locationConnection;
 
 import java.awt.event.ActionListener;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 public class SuitableGrpRoom extends JFrame {
@@ -27,6 +32,11 @@ public class SuitableGrpRoom extends JFrame {
 	private String sGrp, sRoom;
 
 	private JPanel contentPane;
+	ArrayList<String> grps = new ArrayList<String>();
+	ArrayList<String> rooms = new ArrayList<String>();
+	JComboBox comboBox = new JComboBox();
+	JComboBox comboBox_1 = new JComboBox();
+	int i,j = 0;
 
 	/**
 	 * Launch the application.
@@ -48,6 +58,42 @@ public class SuitableGrpRoom extends JFrame {
 	 * Create the frame.
 	 */
 	public SuitableGrpRoom() {
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				ResultSet rsGrps= null;
+				ResultSet rsRooms = null;
+				
+				SuitableRoomConnection sRoomConnection = new SuitableRoomConnection();
+				rsGrps = sRoomConnection.grpRetrieve();
+				rsRooms = sRoomConnection.roomRetreieve();
+				
+				
+
+				try {
+					while( rsGrps.next( ) ) { 
+					     grps.add(rsGrps.getString( "groupId"));
+					     comboBox.addItem(grps.get(i));
+					     i++;
+					  }
+				} catch (NumberFormatException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					while( rsRooms.next( ) ) { 
+					     rooms.add(rsRooms.getString( "room"));
+					     comboBox_1.addItem(rooms.get(j));
+					     j++;
+					  }
+				} catch (NumberFormatException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				
+				
+			}
+		});
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 575);
@@ -85,7 +131,6 @@ public class SuitableGrpRoom extends JFrame {
 		label_3.setBounds(542, 228, 48, 25);
 		contentPane.add(label_3);
 		
-		JComboBox comboBox = new JComboBox(new Object[]{});
 		comboBox.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sGrp = (String) comboBox.getSelectedItem();
@@ -94,7 +139,6 @@ public class SuitableGrpRoom extends JFrame {
 		comboBox.setBounds(638, 167, 197, 25);
 		contentPane.add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox(new Object[]{});
 		comboBox_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sRoom = (String) comboBox_1.getSelectedItem();
@@ -114,7 +158,6 @@ public class SuitableGrpRoom extends JFrame {
 					JOptionPane.showMessageDialog(null,
 						    "Please select a valid Room Name");
 				}else {
-					System.out.println(sGrp+ "," + sRoom );
 					SuitableRoomConnection roomConnection = new SuitableRoomConnection();
 					roomConnection.suitableGrpRoom(sGrp, sRoom);
 					
@@ -123,10 +166,34 @@ public class SuitableGrpRoom extends JFrame {
 				}}
 		});
 		button.setOpaque(true);
-		button.setForeground(Color.BLUE);
+		button.setForeground(Color.WHITE);
 		button.setBackground(new Color(65, 105, 225));
 		button.setBounds(696, 280, 90, 40);
 		contentPane.add(button);
+		
+		JButton bckBtn = new JButton("BACK");
+		bckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				RoomManagementHome home = new RoomManagementHome();
+				home.setVisible(true);
+				
+				}
+		});
+		bckBtn.setOpaque(true);
+		bckBtn.setForeground(Color.WHITE);
+		bckBtn.setBackground(new Color(65, 105, 225));
+		bckBtn.setBounds(890, 25, 90, 35);
+		contentPane.add(bckBtn);
+		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 454, 1037, 119);
+		contentPane.add(image2);
 	}
 
 }
+
+

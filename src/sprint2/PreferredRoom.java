@@ -4,10 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSeparator;
 import javax.swing.SwingConstants;
@@ -16,10 +19,23 @@ import javax.swing.border.EmptyBorder;
 import location.AddLocation;
 import javax.swing.JComboBox;
 import javax.swing.JButton;
+import java.awt.event.ComponentAdapter;
+import java.awt.event.ComponentEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
 
 public class PreferredRoom extends JFrame {
 
 	private JPanel contentPane;
+	ArrayList<String> tags = new ArrayList<String>();
+	ArrayList<String> rooms = new ArrayList<String>();
+	ArrayList<String> modules = new ArrayList<String>();
+	JComboBox comboBox = new JComboBox();
+	JComboBox comboBox_1 = new JComboBox();
+	JComboBox comboBox_2 = new JComboBox();
+	int i,j,k = 0;
+	String sRoom, sTag, sModule;
 
 	/**
 	 * Launch the application.
@@ -41,10 +57,58 @@ public class PreferredRoom extends JFrame {
 	 * Create the frame.
 	 */
 	public PreferredRoom() {
+		addComponentListener(new ComponentAdapter() {
+			@Override
+			public void componentShown(ComponentEvent e) {
+				
+				ResultSet rs= null;
+				ResultSet rsRooms = null;
+				ResultSet rsModules = null;
+				
+				PreferredRoomConnection prefConnection = new PreferredRoomConnection();
+				rs = prefConnection.tagsRetrieve();
+				rsRooms = prefConnection.roomRetreieve();
+				rsModules = prefConnection.moduleRetreieve();
+				
+				
+
+				try {
+					while( rs.next( ) ) { 
+					     tags.add(rs.getString( "Tag"));
+					     comboBox.addItem(tags.get(i));
+					     i++;
+					  }
+				} catch (NumberFormatException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					while( rsRooms.next( ) ) { 
+					     rooms.add(rsRooms.getString( "room"));
+					     comboBox_1.addItem(rooms.get(j));
+					     j++;
+					  }
+				} catch (NumberFormatException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+				try {
+					while( rsModules.next( ) ) { 
+					     modules.add(rsModules.getString( "subName"));
+					     comboBox_2.addItem(modules.get(k));
+					     k++;
+					  }
+				} catch (NumberFormatException | SQLException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		});
 		setResizable(false);
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(100, 100, 1000, 575);
 		contentPane = new JPanel();
+		
 		contentPane.setForeground(new Color(153, 51, 255));
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -84,24 +148,81 @@ public class PreferredRoom extends JFrame {
 		label_4.setBounds(544, 259, 48, 25);
 		contentPane.add(label_4);
 		
-		JComboBox comboBox = new JComboBox(new Object[]{});
+		comboBox.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sTag = (String)comboBox.getSelectedItem();
+			}
+		});
 		comboBox.setBounds(660, 131, 197, 25);
 		contentPane.add(comboBox);
 		
-		JComboBox comboBox_1 = new JComboBox(new Object[]{});
+		comboBox_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sModule = (String)comboBox_1.getSelectedItem();
+			}
+		});
 		comboBox_1.setBounds(660, 196, 197, 25);
 		contentPane.add(comboBox_1);
 		
-		JComboBox comboBox_2 = new JComboBox(new Object[]{});
+		comboBox_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				sRoom = (String)comboBox_2.getSelectedItem();
+			}
+		});
 		comboBox_2.setBounds(660, 260, 197, 25);
 		contentPane.add(comboBox_2);
 		
 		JButton button = new JButton("Submit");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				if(sTag.isEmpty()) {
+					JOptionPane.showMessageDialog(null,
+						    "Please select a Tag");
+				}else if(sRoom.isEmpty()){
+					JOptionPane.showMessageDialog(null,
+						    "Please select a Room");
+				}else if(sModule.isEmpty()) {
+					JOptionPane.showMessageDialog(null, 
+							"Please select a Module");
+				}else {
+					PreferredRoomConnection prefConnection = new PreferredRoomConnection();
+					prefConnection.insertPrefRoom(sTag, sModule, sRoom);
+					
+					JOptionPane.showMessageDialog(null,
+						    "Preferred Room Added Successfully !");	
+				}
+			}
+		});
 		button.setOpaque(true);
-		button.setForeground(Color.BLUE);
+		button.setForeground(Color.WHITE);
 		button.setBackground(new Color(65, 105, 225));
 		button.setBounds(721, 330, 90, 40);
 		contentPane.add(button);
+		
+		JButton bckBtn = new JButton("BACK");
+		bckBtn.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				dispose();
+				RoomManagementHome home = new RoomManagementHome();
+				home.setVisible(true);
+				
+				}
+		});
+		bckBtn.setOpaque(true);
+		bckBtn.setForeground(Color.WHITE);
+		bckBtn.setBackground(new Color(65, 105, 225));
+		bckBtn.setBounds(890, 25, 90, 35);
+		contentPane.add(bckBtn);
+		
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 460, 1037, 119);
+		contentPane.add(image2);
 	}
 
 }
+
+

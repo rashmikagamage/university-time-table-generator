@@ -15,7 +15,7 @@ public class StatConnection {
 		
 		ResultSet rs = null;
 		try {
-			String query = "SELECT COUNT(*) FROM lecturers";
+			String query = "SELECT COUNT(*) FROM lects";
 			ps = connection.prepareStatement(query);
 			rs = ps.executeQuery();
 		} catch (SQLException e) {
@@ -31,7 +31,7 @@ public class StatConnection {
 			
 			ResultSet rs = null;
 			try {
-				String query = "SELECT levelString, count(levelString) as count FROM lecturers GROUP BY levelString";
+				String query = "SELECT levelString, count(levelString) as count FROM lects GROUP BY levelString";
 				ps = connection.prepareStatement(query);
 				rs = ps.executeQuery();
 			} catch (SQLException e) {
