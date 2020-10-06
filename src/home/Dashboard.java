@@ -16,10 +16,12 @@ import javax.swing.border.EmptyBorder;
 
 import ConsecutiveSession.ConsecutiveSession;
 import Tags.Tags;
+import generateTimetable.generateNav;
 import lecturer.LecturerSubjectHome;
 import parallelSession.ParallelSes;
 import session.SessionsHome;
 import student.StudentHome;
+import workingDayAndHours.Navigation;
 
 public class Dashboard extends JFrame {
 
@@ -169,6 +171,29 @@ public class Dashboard extends JFrame {
 		button.setBackground(new Color(25, 25, 112));
 		button.setBounds(703, 397, 211, 53);
 		contentPane.add(button);
+		
+		JButton btnWorkingDaysAnd = new JButton("Working Days and TimeSlots");
+		btnWorkingDaysAnd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Navigation p = new Navigation();
+				p.setVisible(true);
+				
+			}
+		});
+		btnWorkingDaysAnd.setBounds(85, 27, 196, 45);
+		contentPane.add(btnWorkingDaysAnd);
+		
+		JButton btnGenerate = new JButton("Generate");
+		btnGenerate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				generateNav p = new generateNav();
+				p.setVisible(true);
+				
+			}
+		});
+		btnGenerate.setBounds(742, 38, 89, 23);
+		contentPane.add(btnGenerate);
 		
 	}
 }
