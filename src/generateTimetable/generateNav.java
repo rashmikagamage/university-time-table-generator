@@ -48,7 +48,7 @@ public class generateNav extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/img/class.png"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("class.png"));
 		image.setIcon(img);
 		image.setBounds(75, 65, 394, 375);
 		contentPane.add(image);
