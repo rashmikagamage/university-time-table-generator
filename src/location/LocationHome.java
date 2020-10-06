@@ -106,21 +106,6 @@ public class LocationHome extends JFrame {
 		image2.setBounds(-11, 455, 1037, 90);
 		contentPane.add(image2);
 		
-		JButton bckBtn = new JButton("BACK");
-		bckBtn.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				dispose();
-				Dashboard home = new Dashboard();
-				home.setVisible(true);
-				
-				}
-		});
-		bckBtn.setOpaque(true);
-		bckBtn.setForeground(Color.WHITE);
-		bckBtn.setBackground(new Color(65, 105, 225));
-		bckBtn.setBounds(880, 25, 90, 35);
-		contentPane.add(bckBtn);
 	}
 
 }
