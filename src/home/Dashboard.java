@@ -23,6 +23,8 @@ import session.SessionsHome;
 import sprint2.RoomManagementHome;
 import statistics.ViewStatistics;
 import student.StudentHome;
+import workingDayAndHours.Navigation;
+import generateTimetable.generateNav;
 
 public class Dashboard extends JFrame {
 
