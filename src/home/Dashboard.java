@@ -203,5 +203,28 @@ public class Dashboard extends JFrame {
 		roomManagement.setBounds(703, 45, 211, 53);
 		contentPane.add(roomManagement);
 		
+		JButton btnWorkingDaysAnd = new JButton("Working Days and TimeSlots");
+		btnWorkingDaysAnd.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				Navigation p = new Navigation();
+				p.setVisible(true);
+				
+			}
+		});
+		btnWorkingDaysAnd.setBounds(85, 27, 196, 45);
+		contentPane.add(btnWorkingDaysAnd);
+		
+		JButton btnGenerate = new JButton("Generate");
+		btnGenerate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				generateNav p = new generateNav();
+				p.setVisible(true);
+				
+			}
+		});
+		btnGenerate.setBounds(742, 38, 89, 23);
+		contentPane.add(btnGenerate);
+		
 	}
 }
