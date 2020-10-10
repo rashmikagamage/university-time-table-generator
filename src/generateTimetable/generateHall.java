@@ -33,7 +33,7 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 import db_connection.DB_Connection;
-import genModel.*;
+import Model.*;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -173,9 +173,9 @@ public class generateHall extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-//				generateNav s = new generateNav();
-//				dispose();
-//				s.setVisible(true);
+				generateNav s = new generateNav();
+				dispose();
+				s.setVisible(true);
 				
 			}
 		});
@@ -414,6 +414,7 @@ public class generateHall extends JFrame {
 		Friday16.setFont(new Font("Arial", Font.PLAIN, 9));
 		
 		table = new JTable();
+		table.setEnabled(false);
 		table.setBounds(0, 0, 931, 399);
 		TimeTablePanel.add(table);
 		table.setFont(new Font("Tahoma", Font.BOLD, 14));

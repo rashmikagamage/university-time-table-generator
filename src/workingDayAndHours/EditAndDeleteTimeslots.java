@@ -291,7 +291,7 @@ public class EditAndDeleteTimeslots extends JFrame {
 			public void actionPerformed(ActionEvent arg1) {
 		
 		if(rdbtnOneHour.isSelected()) {
-			wdType = "One Hour";
+			wType = "1 Hour";
 		}
 		else {
 			
@@ -384,10 +384,14 @@ public class EditAndDeleteTimeslots extends JFrame {
 		
 		btnCalculat = new JButton("Calculate");
 		btnCalculat.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
+			public void actionPerformed(ActionEvent e2) {
 				
+			workHours = (Integer)spinner_2.getValue() - (Integer)spinner.getValue();
+			workMinutes = (Integer)spinner_3.getValue() - (Integer)spinner_1.getValue();	
+			
+				textField.setText("" +workHours);
 				
-				
+				textField_1.setText("" +workMinutes);
 			}
 		});
 		

@@ -1,4 +1,4 @@
-package genModel;
+package Model;
 
 public class sessionsModel {
 	String id,lects,subject,code,tag,groupId,count,duration;

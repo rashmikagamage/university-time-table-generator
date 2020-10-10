@@ -1,4 +1,4 @@
-package genModel;
+package Model;
 
 public class SessionRoomModel {
 	String id,session,room;

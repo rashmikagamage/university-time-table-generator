@@ -202,9 +202,9 @@ public class AddTimeSlots extends JFrame {
 		
 		
 		JLabel image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/clockk.jpg"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/clockk.png"));
 		image.setIcon(img);
-		image.setBounds(91, 88, 263, 335);
+		image.setBounds(71, 114, 267, 265);
 		contentPane.add(image);
 		
 		error1 = new JLabel("");
@@ -289,20 +289,24 @@ public class AddTimeSlots extends JFrame {
 		contentPane.add(textField_2);
 		textField_2.setColumns(10);
 		
-		/*JButton btnCalculate = new JButton("Calculate");
+		
+		
+		JButton btnCalculate = new JButton("Calculate");
 		btnCalculate.setBounds(807, 201, 89, 23);
 		contentPane.add(btnCalculate);
 		btnCalculate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e2) {
 				
+			workHours = (Integer)spinner_2.getValue() - (Integer)spinner.getValue();
+			workMinutes = (Integer)spinner_3.getValue() - (Integer)spinner_1.getValue();	
+			
 				textField_1.setText("" +workHours);
 				
 				textField_2.setText("" +workMinutes);
 			}
-		});*/
+		});
 		
-		workHours = (Integer)spinner.getValue() - (Integer)spinner_2.getValue();
-		workMinutes = (Integer)spinner_1.getValue() - (Integer)spinner_3.getValue();
+		
 		
 	}
 }

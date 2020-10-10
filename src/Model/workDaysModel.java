@@ -1,4 +1,4 @@
-package genModel;
+package Model;
 
 public class workDaysModel {
 	String wID,wdhType,wdhNoDays,wMonday,wTuesday,wWednesday,wThursday,wFriday;

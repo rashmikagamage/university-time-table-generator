@@ -248,6 +248,9 @@ public class AddWorkingDaysAndHours extends JFrame {
 				if(rdbtnWeekday.isSelected()) {
 					wTypeWD = "WeekDay";
 				}
+				else {
+					wTypeWD= "WeekEnd"; 
+				}
 				
 				
 			}
@@ -266,7 +269,9 @@ public class AddWorkingDaysAndHours extends JFrame {
 				if(rdbtnWeekend.isSelected()) {
 					wTypeWD = "WeekEnd";
 				}
-				
+				else {
+					wTypeWD = "WeekDay";
+				}
 				
 			}
 		});

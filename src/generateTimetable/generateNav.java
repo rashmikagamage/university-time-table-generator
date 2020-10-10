@@ -48,7 +48,7 @@ public class generateNav extends JFrame {
 		contentPane.setLayout(null);
 		
 		JLabel image = new JLabel("");
-		ImageIcon img = new ImageIcon(this.getClass().getResource("class.png"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/class1.png"));
 		image.setIcon(img);
 		image.setBounds(75, 65, 394, 375);
 		contentPane.add(image);
@@ -64,7 +64,7 @@ public class generateNav extends JFrame {
 		});
 		btnAddWorkingDays.setForeground(Color.WHITE);
 		btnAddWorkingDays.setBackground(new Color(102, 51, 255));
-		btnAddWorkingDays.setBounds(767, 162, 169, 89);
+		btnAddWorkingDays.setBounds(767, 162, 200, 89);
 		contentPane.add(btnAddWorkingDays);
 		
 		JButton btnGenerateStudentTimetable = new JButton("Generate Student Timetable");
@@ -83,7 +83,7 @@ public class generateNav extends JFrame {
 		
 		btnGenerateStudentTimetable.setForeground(Color.WHITE);
 		btnGenerateStudentTimetable.setBackground(new Color(102, 51, 255));
-		btnGenerateStudentTimetable.setBounds(562, 162, 169, 89);
+		btnGenerateStudentTimetable.setBounds(519, 162, 200, 89);
 		contentPane.add(btnGenerateStudentTimetable);
 		
 		JButton btnViewAndEdit = new JButton("Generate Hall Timetable");
@@ -98,7 +98,7 @@ public class generateNav extends JFrame {
 		});
 		btnViewAndEdit.setForeground(Color.WHITE);
 		btnViewAndEdit.setBackground(new Color(102, 51, 255));
-		btnViewAndEdit.setBounds(672, 295, 169, 89);
+		btnViewAndEdit.setBounds(656, 295, 200, 89);
 		contentPane.add(btnViewAndEdit);
 
 }

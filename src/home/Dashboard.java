@@ -82,7 +82,7 @@ public class Dashboard extends JFrame {
 		});
 		btnStudentsManagement.setForeground(Color.WHITE);
 		btnStudentsManagement.setBackground(new Color(25, 25, 112));
-		btnStudentsManagement.setBounds(85, 101, 211, 53);
+		btnStudentsManagement.setBounds(88, 157, 211, 53);
 		contentPane.add(btnStudentsManagement);
 		
 
@@ -90,7 +90,7 @@ public class Dashboard extends JFrame {
 		image.setBackground(new Color(25, 25, 112));
 		ImageIcon img = new ImageIcon(this.getClass().getResource("/dashboard.png"));
 		image.setIcon(img);
-		image.setBounds(362, 101, 384, 358);
+		image.setBounds(309, 83, 378, 350);
 		contentPane.add(image);
 		
 		JButton btnTagsManagement = new JButton("Tags Management");
@@ -102,7 +102,7 @@ public class Dashboard extends JFrame {
 		});
 		btnTagsManagement.setForeground(Color.WHITE);
 		btnTagsManagement.setBackground(new Color(25, 25, 112));
-		btnTagsManagement.setBounds(85, 205, 211, 53);
+		btnTagsManagement.setBounds(88, 221, 211, 53);
 		contentPane.add(btnTagsManagement);
 		
 		JButton btnLecturerManagement = new JButton("Lecturer Management");
@@ -114,7 +114,7 @@ public class Dashboard extends JFrame {
 		});
 		btnLecturerManagement.setForeground(Color.WHITE);
 		btnLecturerManagement.setBackground(new Color(25, 25, 112));
-		btnLecturerManagement.setBounds(85, 301, 211, 53);
+		btnLecturerManagement.setBounds(88, 285, 211, 53);
 		contentPane.add(btnLecturerManagement);
 		
 		JButton btnStatisticsManagement = new JButton("View Statistics ");
@@ -127,7 +127,7 @@ public class Dashboard extends JFrame {
 		});
 		btnStatisticsManagement.setForeground(Color.WHITE);
 		btnStatisticsManagement.setBackground(new Color(25, 25, 112));
-		btnStatisticsManagement.setBounds(703, 125, 211, 53);
+		btnStatisticsManagement.setBounds(703, 109, 211, 53);
 		contentPane.add(btnStatisticsManagement);
 		
 		JButton button_4 = new JButton("Consecutive Session Management");
@@ -141,7 +141,7 @@ public class Dashboard extends JFrame {
 		});
 		button_4.setForeground(Color.WHITE);
 		button_4.setBackground(new Color(25, 25, 112));
-		button_4.setBounds(703, 205, 211, 53);
+		button_4.setBounds(703, 173, 211, 53);
 		contentPane.add(button_4);
 		
 		JButton btnSessionManagement_1 = new JButton("Session Management");
@@ -154,7 +154,7 @@ public class Dashboard extends JFrame {
 		});
 		btnSessionManagement_1.setForeground(Color.WHITE);
 		btnSessionManagement_1.setBackground(new Color(25, 25, 112));
-		btnSessionManagement_1.setBounds(703, 397, 211, 53);
+		btnSessionManagement_1.setBounds(703, 301, 211, 53);
 		contentPane.add(btnSessionManagement_1);
 		
 		JButton button_5 = new JButton("Location Management");
@@ -167,7 +167,7 @@ public class Dashboard extends JFrame {
 		});
 		button_5.setForeground(Color.WHITE);
 		button_5.setBackground(new Color(25, 25, 112));
-		button_5.setBounds(703, 301, 211, 53);
+		button_5.setBounds(703, 237, 211, 53);
 		contentPane.add(button_5);
 		
 		JLabel image2 = new JLabel("");
@@ -186,7 +186,7 @@ public class Dashboard extends JFrame {
 		});
 		btnSessionManagement.setForeground(Color.WHITE);
 		btnSessionManagement.setBackground(new Color(25, 25, 112));
-		btnSessionManagement.setBounds(85, 397, 211, 53);
+		btnSessionManagement.setBounds(88, 359, 211, 53);
 		contentPane.add(btnSessionManagement);
 		
 		JButton roomManagement = new JButton("Room Management");
@@ -204,6 +204,8 @@ public class Dashboard extends JFrame {
 		contentPane.add(roomManagement);
 		
 		JButton btnWorkingDaysAnd = new JButton("Working Days and TimeSlots");
+		btnWorkingDaysAnd.setForeground(Color.WHITE);
+		btnWorkingDaysAnd.setBackground(new Color(25, 25, 112));
 		btnWorkingDaysAnd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -212,10 +214,12 @@ public class Dashboard extends JFrame {
 				
 			}
 		});
-		btnWorkingDaysAnd.setBounds(85, 27, 196, 45);
+		btnWorkingDaysAnd.setBounds(88, 83, 211, 53);
 		contentPane.add(btnWorkingDaysAnd);
 		
 		JButton btnGenerate = new JButton("Generate");
+		btnGenerate.setForeground(Color.WHITE);
+		btnGenerate.setBackground(new Color(25, 25, 112));
 		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				generateNav p = new generateNav();
@@ -223,7 +227,7 @@ public class Dashboard extends JFrame {
 				
 			}
 		});
-		btnGenerate.setBounds(742, 38, 89, 23);
+		btnGenerate.setBounds(703, 365, 211, 53);
 		contentPane.add(btnGenerate);
 		
 	}
