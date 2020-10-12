@@ -13,6 +13,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.awt.Font;
 
 public class generateNav extends JFrame {
 
@@ -98,8 +99,22 @@ public class generateNav extends JFrame {
 		});
 		btnViewAndEdit.setForeground(Color.WHITE);
 		btnViewAndEdit.setBackground(new Color(102, 51, 255));
-		btnViewAndEdit.setBounds(656, 295, 200, 89);
+		btnViewAndEdit.setBounds(648, 295, 200, 89);
 		contentPane.add(btnViewAndEdit);
+		
+		
+
+		JLabel image2 = new JLabel("");
+		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
+		image2.setIcon(img2);
+		image2.setBounds(0, 439, 1037, 119);
+		contentPane.add(image2);
+
+		JLabel lblGenerateTimetable = new JLabel("Generate Timetable");
+		lblGenerateTimetable.setForeground(new Color(0, 0, 128));
+		lblGenerateTimetable.setFont(new Font("Tahoma", Font.PLAIN, 25));
+		lblGenerateTimetable.setBounds(364, 29, 280, 59);
+		contentPane.add(lblGenerateTimetable);
 
 }
 }

@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-import com.mysql.fabric.xmlrpc.base.Array;
 
 public class TagsDataConnection {
 

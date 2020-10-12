@@ -154,52 +154,52 @@ public class ConsecutiveSession extends JFrame {
 		label_4.setBounds(556, 332, 87, 14);
 		contentPane.add(label_4);
 
-		JLabel s1tag = new JLabel("");
+		JLabel s1tag = new JLabel("Lecture");
 		s1tag.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s1tag.setBounds(242, 261, 144, 18);
 		contentPane.add(s1tag);
 
-		JLabel s1code = new JLabel("");
+		JLabel s1code = new JLabel("SE001");
 		s1code.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s1code.setBounds(242, 223, 144, 18);
 		contentPane.add(s1code);
 
-		JLabel s1subject = new JLabel("");
+		JLabel s1subject = new JLabel("Mathematics");
 		s1subject.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s1subject.setBounds(242, 189, 144, 18);
 		contentPane.add(s1subject);
 
-		JLabel s1count = new JLabel("");
+		JLabel s1count = new JLabel("100");
 		s1count.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s1count.setBounds(242, 298, 144, 18);
 		contentPane.add(s1count);
 
-		JLabel s2subject = new JLabel("");
+		JLabel s2subject = new JLabel("Mathematics");
 		s2subject.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s2subject.setBounds(689, 189, 144, 18);
 		contentPane.add(s2subject);
 
-		JLabel s2code = new JLabel("");
+		JLabel s2code = new JLabel("SE001");
 		s2code.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s2code.setBounds(689, 223, 144, 18);
 		contentPane.add(s2code);
 
-		JLabel s2Tag = new JLabel("");
+		JLabel s2Tag = new JLabel("Lecture");
 		s2Tag.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s2Tag.setBounds(689, 262, 144, 18);
 		contentPane.add(s2Tag);
 
-		JLabel s2count = new JLabel("");
+		JLabel s2count = new JLabel("10");
 		s2count.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s2count.setBounds(689, 298, 144, 18);
 		contentPane.add(s2count);
 
-		JLabel s2dur = new JLabel("");
+		JLabel s2dur = new JLabel("2");
 		s2dur.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s2dur.setBounds(689, 328, 144, 18);
 		contentPane.add(s2dur);
 
-		JLabel s1dur = new JLabel("");
+		JLabel s1dur = new JLabel("2");
 		s1dur.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		s1dur.setBounds(242, 328, 144, 18);
 		contentPane.add(s1dur);

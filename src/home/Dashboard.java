@@ -88,9 +88,9 @@ public class Dashboard extends JFrame {
 
 		JLabel image = new JLabel("");
 		image.setBackground(new Color(25, 25, 112));
-		ImageIcon img = new ImageIcon(this.getClass().getResource("/dashboard.png"));
+		ImageIcon img = new ImageIcon(this.getClass().getResource("/dash.png"));
 		image.setIcon(img);
-		image.setBounds(309, 83, 378, 350);
+		image.setBounds(351, 79, 320, 349);
 		contentPane.add(image);
 		
 		JButton btnTagsManagement = new JButton("Tags Management");
@@ -127,11 +127,11 @@ public class Dashboard extends JFrame {
 		});
 		btnStatisticsManagement.setForeground(Color.WHITE);
 		btnStatisticsManagement.setBackground(new Color(25, 25, 112));
-		btnStatisticsManagement.setBounds(703, 109, 211, 53);
+		btnStatisticsManagement.setBounds(703, 157, 211, 53);
 		contentPane.add(btnStatisticsManagement);
 		
-		JButton button_4 = new JButton("Consecutive Session Management");
-		button_4.setFont(new Font("Tahoma", Font.PLAIN, 10));
+		JButton button_4 = new JButton("Consecutive Sessions");
+		button_4.setFont(new Font("Tahoma", Font.PLAIN, 12));
 		button_4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ConsecutiveSession   c = new ConsecutiveSession();
@@ -141,7 +141,7 @@ public class Dashboard extends JFrame {
 		});
 		button_4.setForeground(Color.WHITE);
 		button_4.setBackground(new Color(25, 25, 112));
-		button_4.setBounds(703, 173, 211, 53);
+		button_4.setBounds(703, 221, 211, 53);
 		contentPane.add(button_4);
 		
 		JButton btnSessionManagement_1 = new JButton("Session Management");
@@ -154,7 +154,7 @@ public class Dashboard extends JFrame {
 		});
 		btnSessionManagement_1.setForeground(Color.WHITE);
 		btnSessionManagement_1.setBackground(new Color(25, 25, 112));
-		btnSessionManagement_1.setBounds(703, 301, 211, 53);
+		btnSessionManagement_1.setBounds(703, 349, 211, 53);
 		contentPane.add(btnSessionManagement_1);
 		
 		JButton button_5 = new JButton("Location Management");
@@ -167,13 +167,13 @@ public class Dashboard extends JFrame {
 		});
 		button_5.setForeground(Color.WHITE);
 		button_5.setBackground(new Color(25, 25, 112));
-		button_5.setBounds(703, 237, 211, 53);
+		button_5.setBounds(703, 285, 211, 53);
 		contentPane.add(button_5);
 		
 		JLabel image2 = new JLabel("");
 		ImageIcon img2 = new ImageIcon(this.getClass().getResource("/foot.png"));
 		image2.setIcon(img2);
-		image2.setBounds(0, 439, 1037, 119);
+		image2.setBounds(0, 449, 1037, 119);
 		contentPane.add(image2);
 		
 		JButton btnSessionManagement = new JButton("Parallel Session Management");
@@ -186,7 +186,7 @@ public class Dashboard extends JFrame {
 		});
 		btnSessionManagement.setForeground(Color.WHITE);
 		btnSessionManagement.setBackground(new Color(25, 25, 112));
-		btnSessionManagement.setBounds(88, 359, 211, 53);
+		btnSessionManagement.setBounds(88, 349, 211, 53);
 		contentPane.add(btnSessionManagement);
 		
 		JButton roomManagement = new JButton("Room Management");
@@ -200,7 +200,7 @@ public class Dashboard extends JFrame {
 		});
 		roomManagement.setForeground(Color.WHITE);
 		roomManagement.setBackground(new Color(25, 25, 112));
-		roomManagement.setBounds(703, 45, 211, 53);
+		roomManagement.setBounds(703, 93, 211, 53);
 		contentPane.add(roomManagement);
 		
 		JButton btnWorkingDaysAnd = new JButton("Working Days and TimeSlots");
@@ -214,7 +214,7 @@ public class Dashboard extends JFrame {
 				
 			}
 		});
-		btnWorkingDaysAnd.setBounds(88, 83, 211, 53);
+		btnWorkingDaysAnd.setBounds(88, 93, 211, 53);
 		contentPane.add(btnWorkingDaysAnd);
 		
 		JButton btnGenerate = new JButton("Generate");
@@ -227,8 +227,26 @@ public class Dashboard extends JFrame {
 				
 			}
 		});
-		btnGenerate.setBounds(703, 365, 211, 53);
+		btnGenerate.setBounds(397, 400, 224, 61);
 		contentPane.add(btnGenerate);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBackground(new Color(199, 21, 133));
+		lblNewLabel.setBounds(0, 0, 5, 536);
+		lblNewLabel.setOpaque(true);
+		contentPane.add(lblNewLabel);
+		
+		JLabel label_1 = new JLabel("New label");
+		label_1.setOpaque(true);
+		label_1.setBackground(new Color(199, 21, 133));
+		label_1.setBounds(979, 0, 5, 536);
+		contentPane.add(label_1);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setOpaque(true);
+		label_2.setBackground(new Color(199, 21, 133));
+		label_2.setBounds(0, 0, 984, 5);
+		contentPane.add(label_2);
 		
 	}
 }

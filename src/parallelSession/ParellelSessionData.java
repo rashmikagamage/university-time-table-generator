@@ -35,7 +35,7 @@ public class ParellelSessionData {
 	}
 	
 	public void addData(String id1,String id2) {
-		System.out.println("id1");
+		
 		db_connection.DB_Connection obj_DB_Connection = new db_connection.DB_Connection();
 		Connection connection = obj_DB_Connection.get_connection();
 		PreparedStatement ps = null;
