@@ -172,9 +172,9 @@ public class generateLecturer extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				generateNav s = new generateNav();
-				dispose();
-				s.setVisible(true);
+//				generateNav s = new generateNav();
+//				dispose();
+//				s.setVisible(true);
 				
 			}
 		});

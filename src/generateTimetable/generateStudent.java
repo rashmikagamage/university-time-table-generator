@@ -38,11 +38,12 @@ import Model.*;
 import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import javax.swing.JComboBox;
+import javax.swing.DefaultComboBoxModel;
 
 public class generateStudent extends JFrame {
 
 	private JPanel contentPane;
-	private JTextField textField;
 	private JTable table;
 	public String[][] data=new String[][] {{"",""}};
 	private JLabel Monday8;
@@ -98,6 +99,7 @@ public class generateStudent extends JFrame {
 	HashMap<String, JLabel> LabelName=null;
 	ArrayList<String> LableNameList= new ArrayList<>();
 	private JPanel TimeTabelPanel;
+	private JComboBox studentIdCB;
 
 	/**
 	 * Launch the application.
@@ -155,15 +157,10 @@ public class generateStudent extends JFrame {
 		lblStudentId.setBounds(306, 32, 64, 14);
 		contentPane.add(lblStudentId);
 		
-		textField = new JTextField();
-		textField.setBounds(389, 29, 86, 20);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
 		JButton btnGenerate = new JButton("Generate");
 		btnGenerate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				setStuentTimeTable(textField.getText());
+				setStuentTimeTable(studentIdCB.getSelectedItem().toString());
 			}
 		});
 		btnGenerate.setBounds(511, 28, 89, 23);
@@ -174,9 +171,9 @@ public class generateStudent extends JFrame {
 		btnBack.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
-				generateNav s = new generateNav();
-				dispose();
-				s.setVisible(true);
+//				generateNav s = new generateNav();
+//				dispose();
+//				s.setVisible(true);
 				
 			}
 		});
@@ -457,6 +454,11 @@ public class generateStudent extends JFrame {
 		table.getColumnModel().getColumn(5).setResizable(false);
 		table.getColumnModel().getColumn(5).setPreferredWidth(150);
 		table.setRowHeight(40);
+		
+		studentIdCB = new JComboBox();
+		studentIdCB.setModel(new DefaultComboBoxModel(new String[] {"Y3.S2.DBS.08", "Y3.S2.DBS.09", "Y1.S2.CSSE.01", "Y3.S2.DBS.08.02", "Y3.S2.SE.03"}));
+		studentIdCB.setBounds(377, 29, 124, 20);
+		contentPane.add(studentIdCB);
 		
 
 }
