@@ -546,6 +546,16 @@ public class generateStudent extends JFrame {
 				}
 			}
 			}
+		
+		if(text.equals("Y3.S2.SE.03")) {
+			for(String lableName:getLabelNameList("Monday",8,9)) {
+				getLabelHaspMap().get(lableName).setText("Y3.S2.SE.03"+"\n"+"SE3080"+"-"+"SPM"+"("+"Lecture"+")");
+			}
+			for(String lableName:getLabelNameList("Monday",10,10)) {
+				getLabelHaspMap().get(lableName).setText("Y3.S2.SE.03"+"\n"+"SE3080"+"-"+"SPM"+"("+"Tute"+")");
+			}
+				
+		}
 		}
 		
 	
